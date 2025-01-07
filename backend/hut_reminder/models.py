@@ -28,3 +28,5 @@ class Reminder(models.Model):
             f"Notification: {self.notification_type} | Active: {self.is_active}")
 
 
+# Availability Model??
+
