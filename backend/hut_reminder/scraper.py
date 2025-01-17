@@ -1,12 +1,20 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 
 # Step 1: Set up the Selenium WebDriver
-# - Initialize the WebDriver (e.g., ChromeDriver) to interact with the browser.
-driver = webdriver.Chrome()
-driver.get("https://www.google.com")
+# Step 2: Navigate to the target website 
+def initialize_driver():
+    """Set up and return a Selenium WebDriver."""
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+    driver.get("https://methowreservations.com/lodging/huts")
+    return driver
 
-# Step 2: Navigate to the target website = https://methowreservations.com/lodging/huts
-# - Use the WebDriver to open the URL where the hut data is located.
+if __name__ == "__main__":
+    driver = initialize_driver()
+    print("Browser initialized and navigated to the target site.")
+    driver.quit()
+
 
 # Step 3: Locate the dropdown menu 
 # - Use Selenium to find the dropdown element on the page - NEED TO FIND THE ID OF THE DROPDOWN OR SOMETHING SIMILAR
