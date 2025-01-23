@@ -1,6 +1,10 @@
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
+# Define a custom class called ScrapingResult
+# Array of Dates
+# Map of hutname to array of Booleans for availabilities
+
 # Hut Table
 class Hut(db.Model):
   __tablename__ = 'huts'
