@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.ui import Select
+from datetime import datetime
 
 # Step 1: Set up the Selenium WebDriver
 # Step 2: Navigate to the target website 
@@ -68,6 +69,41 @@ def locate_hut_names(driver):
         print(f"Error locating hut names: {e}")
         return []
 
+def locate_dates(driver):
+    """Locate dates from the second table on the page."""
+    try:
+        # Wait for all tables to be present
+        tables = WebDriverWait(driver, 10).until(
+            EC.presence_of_all_elements_located((By.TAG_NAME, "table"))
+        )
+        
+        # Access the second table (index 1 because list is 0-indexed)
+        second_table = tables[1]
+
+        # Find the first row (tr) of the second table
+        first_row = second_table.find_element(By.TAG_NAME, "tr")
+
+        # Find all cells (td) in the first row
+        cells = first_row.find_elements(By.TAG_NAME, "td")
+
+        # Extract and store the dates
+        dates = []
+        for cell in cells:
+            date_text = cell.text.strip().split()[-1]  # Extract the date part (e.g., '1/23')
+            print(f"Raw date text: '{date_text}'")
+            # Convert the string to a datetime object
+            date_obj = datetime.strptime(date_text, "%m/%d")
+            # Convert to a date object (you can add the year if necessary)
+            current_year = datetime.now().year
+            full_date = datetime.strptime(f"{current_year}-{date_obj.strftime('%m-%d')}", "%Y-%m-%d").date()
+            dates.append(full_date)
+
+        return dates
+
+    except Exception as e:
+        print(f"Error locating dates: {e}")
+        return []
+
 
 # Store this in the DB in the Hut model
 # might need to extract the hut name and dates of the columns from the table first?
@@ -94,4 +130,6 @@ if __name__ == "__main__":
     select_winter_option(driver);
     huts = locate_hut_names(driver)
     print("Hut Names:", huts)
+    dates = locate_dates(driver)
+    print("Dates:", dates)
     driver.quit();
