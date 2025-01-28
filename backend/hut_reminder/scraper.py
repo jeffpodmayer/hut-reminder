@@ -7,13 +7,17 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.ui import Select
 from datetime import datetime
 
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 # Step 1: Set up the Selenium WebDriver
 # Step 2: Navigate to the target website 
 def initialize_driver():
     """Set up and return a Selenium WebDriver."""
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
     driver.get("https://methowreservations.com/lodging/huts")
-    print("Browser initialized and navigated to the target site.")
+    logger.info("Browser initialized and navigated to the target site.")
     return driver
 
 def select_winter_option(driver):
@@ -33,7 +37,7 @@ def select_winter_option(driver):
         )
         print("Selected 'Winter' from the dropdown.")
     except Exception as e:
-        print(e)
+        logger.error(f"Error selecting winter option: {e}")
 
 # Step 6: Locate the table or hut data on the page
 def locate_hut_names(driver):
@@ -43,10 +47,10 @@ def locate_hut_names(driver):
             EC.presence_of_all_elements_located((By.TAG_NAME, "table"))
         )
         if not tables:
-            print("No tables found.")
+            logger.warning("No tables found.")
             return []
         table = tables[0]  
-        print("First table found.")
+        logger.info("First table found.")
         
         rows = table.find_elements(By.TAG_NAME, "tr")
 
@@ -66,34 +70,25 @@ def locate_hut_names(driver):
         return hut_names
 
     except Exception as e:
-        print(f"Error locating hut names: {e}")
+        logger.error(f"Error locating hut names: {e}")
         return []
 
 def locate_dates(driver):
     """Locate dates from the second table on the page."""
     try:
-        # Wait for all tables to be present
         tables = WebDriverWait(driver, 10).until(
             EC.presence_of_all_elements_located((By.TAG_NAME, "table"))
         )
-        
-        # Access the second table (index 1 because list is 0-indexed)
         second_table = tables[1]
 
-        # Find the first row (tr) of the second table
         first_row = second_table.find_element(By.TAG_NAME, "tr")
 
-        # Find all cells (td) in the first row
         cells = first_row.find_elements(By.TAG_NAME, "td")
 
-        # Extract and store the dates
         dates = []
         for cell in cells:
-            date_text = cell.text.strip().split()[-1]  # Extract the date part (e.g., '1/23')
-            print(f"Raw date text: '{date_text}'")
-            # Convert the string to a datetime object
+            date_text = cell.text.strip().split()[-1] 
             date_obj = datetime.strptime(date_text, "%m/%d")
-            # Convert to a date object (you can add the year if necessary)
             current_year = datetime.now().year
             full_date = datetime.strptime(f"{current_year}-{date_obj.strftime('%m-%d')}", "%Y-%m-%d").date()
             dates.append(full_date)
@@ -101,7 +96,7 @@ def locate_dates(driver):
         return dates
 
     except Exception as e:
-        print(f"Error locating dates: {e}")
+        logger.error(f"Error locating dates: {e}")
         return []
 
 
