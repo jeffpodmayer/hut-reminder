@@ -99,6 +99,44 @@ def locate_dates(driver):
         logger.error(f"Error locating dates: {e}")
         return []
 
+def locate_availability(driver):
+    """Locate availability for each hut on the page."""
+    try:
+        tables = WebDriverWait(driver, 10).until(
+            EC.presence_of_all_elements_located((By.TAG_NAME, "table"))
+        )
+        # Assuming the availability is in the second table
+        second_table = tables[1]
+
+        rows = second_table.find_elements(By.TAG_NAME, "tr")
+
+        availability_data = []
+        for row in rows[1:]:  # Skipping the first row as it's for dates
+            cells = row.find_elements(By.TAG_NAME, "td")
+            
+            hut_availability = {}
+            
+            # Loop through each cell in the row (representing a date)
+            for i, cell in enumerate(cells):
+                # Find the corresponding date
+                date = dates[i]  # Ensure you have the 'dates' list available
+                
+                # Check if the cell is vacant or not
+                is_vacant = 'vacant' in cell.get_attribute('class')
+                
+                # Save the hut's availability for the corresponding date
+                hut_availability[date] = is_vacant
+
+            # Append the hut's availability to the overall list
+            availability_data.append(hut_availability)
+
+        return availability_data
+
+    except Exception as e:
+        logger.error(f"Error locating availability: {e}")
+        return []
+
+
 
 # Store this in the DB in the Hut model
 # might need to extract the hut name and dates of the columns from the table first?
