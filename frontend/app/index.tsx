@@ -5,46 +5,60 @@ import {
   StyleSheet,
   ImageBackground,
 } from "react-native";
+import { useRouter } from "expo-router";
 
 export default function HomeScreen() {
-  return (
-    <ImageBackground
-      source={require("../assets/images/cassal-hut.jpg")}
-      style={styles.image}
-      resizeMode="cover"
-    >
-      {/* Title Overlay */}
-      <View style={styles.overlay}>
-        <Text style={styles.title}>Rendezvous Reminder</Text>
-      </View>
+  const router = useRouter();
 
-      {/* Buttons at the bottom */}
+  return (
+    <View style={styles.container}>
+      <ImageBackground
+        source={require("../assets/images/cassal-hut2.jpg")}
+        style={styles.image}
+        resizeMode="cover"
+      >
+        <View style={styles.overlay}>
+          <Text style={styles.title}>Rendezvous Reminder</Text>
+        </View>
+      </ImageBackground>
+
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => router.push("/set-reminder")}
+        >
           <Text style={styles.buttonText}>Set Reminder</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => router.push("/view-reminders")}
+        >
           <Text style={styles.buttonText}>View My Reminders</Text>
         </TouchableOpacity>
       </View>
-    </ImageBackground>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
   image: {
-    flex: 1, // Full-screen background
     width: "100%",
-    justifyContent: "center", // Centers the overlay vertically
+    height: "100%",
+    justifyContent: "center",
     alignItems: "center",
   },
   overlay: {
-    backgroundColor: "rgba(0, 0, 0, 0.5)", // Dark overlay for contrast
-    width: 260, // Circle diameter
-    height: 260, // Same as width to make it a circle
-    borderRadius: 150, // Half of width/height to make it round
-    justifyContent: "center", // Centers text vertically
-    alignItems: "center", // Centers text horizontally
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    width: 260,
+    height: 260,
+    borderRadius: 150,
+    justifyContent: "center",
+    alignItems: "center",
     marginBottom: 400,
   },
   title: {
@@ -55,7 +69,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     position: "absolute",
-    bottom: 50, // Keeps buttons above the bottom edge
+    bottom: 50,
     width: "100%",
     alignItems: "center",
   },
@@ -67,7 +81,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: "90%",
     alignItems: "center",
-    backgroundColor: "rgba(255, 255, 255, 0.8)", // Slightly transparent white for visibility
+    backgroundColor: "rgba(255, 255, 255, 0.7)", // Slightly transparent white for visibility
   },
   buttonText: {
     fontSize: 25,

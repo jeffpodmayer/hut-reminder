@@ -1,12 +1,14 @@
 import { View, Text, StyleSheet } from "react-native";
 
-export default function DetailsScreen() {
+const SetReminderScreen = () => {
   return (
     <View style={styles.container}>
-      <Text>Details</Text>
+      <Text>Set Reminders Screen</Text>
     </View>
   );
-}
+};
+
+export default SetReminderScreen;
 
 const styles = StyleSheet.create({
   container: {

@@ -5,17 +5,20 @@ export default function RootLayout() {
     <Stack
       screenOptions={{
         headerStyle: {
-          backgroundColor: "green",
+          backgroundColor: "transparent",
         },
         headerTintColor: "#fff",
-        headerTitleStyle: {
-          fontWeight: "bold",
-        },
       }}
     >
-      <Stack.Screen name="Home" />
-      <Stack.Screen name="SetReminder" />
-      <Stack.Screen name="ViewReminders" />
+      <Stack.Screen
+        name="index"
+        options={{ title: "", headerTransparent: true }}
+      />
+      <Stack.Screen name="set-reminder" options={{ title: "Set Reminder" }} />
+      <Stack.Screen
+        name="view-reminders"
+        options={{ title: "View Your Reminders" }}
+      />
     </Stack>
   );
 }
