@@ -67,6 +67,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
   },
+
+  // CREATE MASTER STYLES SHEET FOR BUTTON BELOW
   buttonContainer: {
     position: "absolute",
     bottom: 50,
@@ -85,7 +87,6 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 25,
-    fontWeight: "bold",
     color: "black",
   },
 });
