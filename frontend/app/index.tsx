@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     borderRadius: 150,
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 400,
+    marginBottom: 325,
   },
   title: {
     fontSize: 30,

@@ -1,9 +1,14 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TextInput } from "react-native";
 
 const ViewRemindersScreen = () => {
   return (
     <View style={styles.container}>
-      <Text>View YOUR Reminders Screen</Text>
+      <Text style={styles.title}>View Your Reminders</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Search reminders..."
+        placeholderTextColor="#666"
+      />
     </View>
   );
 };
@@ -15,5 +20,18 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+  },
+  input: {
+    width: "80%",
+    height: 40,
+    borderWidth: 1,
+    borderColor: "#ccc",
+    borderRadius: 5,
+    padding: 10,
+    marginTop: 20,
   },
 });

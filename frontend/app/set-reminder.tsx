@@ -39,6 +39,7 @@ const SetReminderScreen = () => {
           keyboardType="email-address"
         />
       </View>
+      {/* Add View for selecting wehat Hut - look up select React components */}
       <View style={styles.dateContainer}>
         <Text style={styles.inputLabel}>Date Range of Reminder</Text>
         <Text style={styles.description}>
@@ -51,11 +52,12 @@ const SetReminderScreen = () => {
           }
           endDate={dateRange.endDate ? dateRange.endDate.toDate() : undefined}
           onChange={(params) => handleDateChange(params)}
-          calendarTextStyle={{ color: "black" }} // Day/Month/Year text color
-          selectedTextStyle={{ color: "white" }} // Text color of selected dates
+          calendarTextStyle={{ color: "black" }}
+          selectedTextStyle={{ color: "white" }}
           selectedItemColor="#0047FF"
         />
       </View>
+      {/* Display dates on screen here */}
       <TouchableOpacity style={styles.button}>
         <Text style={styles.buttonText}>Save Reminder</Text>
       </TouchableOpacity>
