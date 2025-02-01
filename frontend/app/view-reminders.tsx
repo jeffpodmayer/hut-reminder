@@ -70,9 +70,16 @@ const ViewRemindersScreen = () => {
   };
 
   const handleSearch = () => {
-    // TODO: Add request cancellation if user searches again quickly
-    // TODO: Add pagination if backend supports it
-    // TODO: Add sorting/filtering if backend supports it
+    if (!email.trim()) {
+      setUserReminders([]);
+      return;
+    }
+
+    // Filter MOCK_REMINDERS based on email
+    const filteredReminders = MOCK_REMINDERS.filter(
+      (reminder) => reminder.email.toLowerCase() === email.toLowerCase()
+    );
+    setUserReminders(filteredReminders);
   };
 
   const handleEdit = (reminderId: string) => {
