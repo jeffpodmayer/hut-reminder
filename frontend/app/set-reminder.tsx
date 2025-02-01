@@ -10,6 +10,7 @@ import dayjs from "dayjs";
 import { useState } from "react";
 
 const SetReminderScreen = () => {
+  const [email, setEmail] = useState("");
   const [dateRange, setDateRange] = useState<{
     startDate: dayjs.Dayjs | null;
     endDate: dayjs.Dayjs | null;
@@ -37,13 +38,15 @@ const SetReminderScreen = () => {
           clearButtonMode="while-editing"
           autoComplete="email"
           keyboardType="email-address"
+          value={email}
+          onChangeText={setEmail}
         />
       </View>
       {/* Add View for selecting wehat Hut - look up select React components */}
       <View style={styles.dateContainer}>
         <Text style={styles.inputLabel}>Date Range of Reminder</Text>
         <Text style={styles.description}>
-          This will notify you of any opening within that date range.
+          This will notify you of any opening at any hut within that date range.
         </Text>
         <DateTimePicker
           mode="range"
