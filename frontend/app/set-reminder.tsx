@@ -1,3 +1,4 @@
+import { router } from "expo-router";
 import {
   View,
   Text,
@@ -9,6 +10,11 @@ import {
 import DateTimePicker from "react-native-ui-datepicker";
 import dayjs from "dayjs";
 import { useState } from "react";
+
+// TODO: API Integration
+// - Add API base URL configuration (likely need environment variables)
+// - Add API authentication headers/tokens if required
+// - Consider adding API request timeout settings
 
 const SetReminderScreen = () => {
   const [email, setEmail] = useState<string>("");
@@ -22,6 +28,9 @@ const SetReminderScreen = () => {
     startDate: null,
     endDate: null,
   });
+
+  // TODO: Add state for API errors
+  const [apiError, setApiError] = useState<string>("");
 
   const handleDateChange = (params: { startDate: any; endDate: any }) => {
     const { startDate, endDate } = params;
@@ -39,26 +48,67 @@ const SetReminderScreen = () => {
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!email) {
-      setEmailError("Email is required");
+      setEmailError("Email is required!");
       return false;
     }
     if (!emailRegex.test(email)) {
-      setEmailError("Please enter a valid email");
+      setEmailError("Please enter a valid email!");
       return false;
     }
     if (!dateRange.startDate || !dateRange.endDate) {
-      Alert.alert("Error", "Please select a date range");
+      Alert.alert("Error", "Please select a date range!");
       return false;
     }
     return true;
   };
 
+  // TODO: API Integration
+  // - Create API service/client for all reminder-related API calls
+  // - Add error handling for network failures
+  // - Add loading states for API calls
+  // - Consider adding retry logic for failed requests
+
   const onSave = () => {
+    // TODO: Format dates to match backend expectations
+    // - Ensure timezone handling is consistent
+    // - Consider using ISO 8601 format for dates
+    // - Ensure date format matches Python backend parsing
+
+    // TODO: Add request body type validation
+    // type ReminderRequest = {
+    //   email: string;
+    //   startDate: string;
+    //   endDate: string;
+    //   hut: string;
+    // };
+
     if (!validateForm()) return;
     setIsLoading(true);
 
-    // This is where you'll eventually add the API call
-    Alert.alert("Success", "Form is valid! Ready for backend integration");
+    // TODO: API Integration
+    // - Make POST request to backend endpoint (e.g., /api/reminders)
+    // - Request body should include:
+    //   {
+    //     email: string,
+    //     startDate: string (ISO format),
+    //     endDate: string (ISO format),
+    //     hut: string
+    //   }
+    // - Add proper error handling for:
+    //   - Network errors
+    //   - Validation errors from backend
+    //   - Server errors
+    // - Show appropriate error messages to user
+    // - Only navigate away on successful response
+
+    Alert.alert("Success", "Reminder saved successfully!", [
+      {
+        text: "OK",
+        onPress: () => {
+          router.push("/");
+        },
+      },
+    ]);
     setIsLoading(false);
   };
 
@@ -69,13 +119,14 @@ const SetReminderScreen = () => {
         <TextInput
           style={[styles.input, emailError && styles.inputError]}
           placeholder="Enter Email"
+          autoCapitalize="none"
           clearButtonMode="while-editing"
           autoComplete="email"
           keyboardType="email-address"
           value={email}
           onChangeText={(text) => {
             setEmail(text);
-            setEmailError(""); // Clear error when typing
+            setEmailError("");
           }}
         />
         {emailError ? <Text style={styles.errorText}>{emailError}</Text> : null}
