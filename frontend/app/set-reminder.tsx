@@ -4,13 +4,17 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import DateTimePicker from "react-native-ui-datepicker";
 import dayjs from "dayjs";
 import { useState } from "react";
 
 const SetReminderScreen = () => {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState<string>("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [emailError, setEmailError] = useState<string>("");
+
   const [dateRange, setDateRange] = useState<{
     startDate: dayjs.Dayjs | null;
     endDate: dayjs.Dayjs | null;
@@ -28,19 +32,51 @@ const SetReminderScreen = () => {
     });
   };
 
+  const validateForm = () => {
+    // Reset error
+    setEmailError("");
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email) {
+      setEmailError("Email is required");
+      return false;
+    }
+    if (!emailRegex.test(email)) {
+      setEmailError("Please enter a valid email");
+      return false;
+    }
+    if (!dateRange.startDate || !dateRange.endDate) {
+      Alert.alert("Error", "Please select a date range");
+      return false;
+    }
+    return true;
+  };
+
+  const onSave = () => {
+    if (!validateForm()) return;
+
+    // This is where you'll eventually add the API call
+    Alert.alert("Success", "Form is valid! Ready for backend integration.");
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.emailContainer}>
         <Text style={styles.inputLabel}>Enter Your Email</Text>
         <TextInput
-          style={styles.input}
+          style={[styles.input, emailError && styles.inputError]}
           placeholder="Enter Email"
           clearButtonMode="while-editing"
           autoComplete="email"
           keyboardType="email-address"
           value={email}
-          onChangeText={setEmail}
+          onChangeText={(text) => {
+            setEmail(text);
+            setEmailError(""); // Clear error when typing
+          }}
         />
+        {emailError ? <Text style={styles.errorText}>{emailError}</Text> : null}
       </View>
       {/* Add View for selecting wehat Hut - look up select React components */}
       <View style={styles.dateContainer}>
@@ -61,8 +97,14 @@ const SetReminderScreen = () => {
         />
       </View>
       {/* Display dates on screen here */}
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Save Reminder</Text>
+      <TouchableOpacity
+        style={[styles.button, isLoading && styles.buttonDisabled]}
+        onPress={onSave}
+        disabled={isLoading}
+      >
+        <Text style={styles.buttonText}>
+          {isLoading ? "Saving..." : "Save Reminder"}
+        </Text>
       </TouchableOpacity>
     </View>
   );
@@ -128,5 +170,17 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 25,
     color: "white",
+  },
+  inputError: {
+    borderColor: "red",
+  },
+  errorText: {
+    color: "red",
+    fontSize: 12,
+    marginTop: -8,
+    marginBottom: 8,
+  },
+  buttonDisabled: {
+    opacity: 0.6,
   },
 });
