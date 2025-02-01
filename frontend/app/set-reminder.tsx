@@ -55,9 +55,11 @@ const SetReminderScreen = () => {
 
   const onSave = () => {
     if (!validateForm()) return;
+    setIsLoading(true);
 
     // This is where you'll eventually add the API call
-    Alert.alert("Success", "Form is valid! Ready for backend integration.");
+    Alert.alert("Success", "Form is valid! Ready for backend integration");
+    setIsLoading(false);
   };
 
   return (
