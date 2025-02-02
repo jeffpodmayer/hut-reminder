@@ -105,7 +105,6 @@ const SetReminderScreen = () => {
       {
         text: "OK",
         onPress: () => {
-          router.replace("/");
           // TODO: Add navigation to ViewRemindersScreen
         },
       },

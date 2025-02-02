@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { useState } from "react";
 import dayjs from "dayjs";
-import { MaterialIcons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 
 // Define a type for our reminder object
 type Reminder = {
@@ -126,17 +126,18 @@ const ViewRemindersScreen = () => {
               </Text>
             </View>
             <View style={styles.cardActions}>
+              {/* Option 4: AntDesign */}
               <TouchableOpacity
                 onPress={() => handleEdit(reminder.id)}
                 style={styles.actionButton}
               >
-                <MaterialIcons name="edit" size={24} color="#0047FF" />
+                <AntDesign name="edit" size={28} color="#0047FF" />
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => handleDelete(reminder.id)}
                 style={styles.actionButton}
               >
-                <MaterialIcons name="delete" size={24} color="#FF0000" />
+                <AntDesign name="delete" size={28} color="#FF0000" />
               </TouchableOpacity>
             </View>
           </View>
@@ -225,6 +226,6 @@ const styles = StyleSheet.create({
   },
   actionButton: {
     padding: 5,
-    marginLeft: 10,
+    marginLeft: 15,
   },
 });
