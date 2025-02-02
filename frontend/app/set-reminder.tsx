@@ -1,4 +1,3 @@
-import { router } from "expo-router";
 import {
   View,
   Text,
@@ -10,11 +9,6 @@ import {
 import DateTimePicker from "react-native-ui-datepicker";
 import dayjs from "dayjs";
 import { useState } from "react";
-
-// TODO: API Integration
-// - Add API base URL configuration (likely need environment variables)
-// - Add API authentication headers/tokens if required
-// - Consider adding API request timeout settings
 
 const SetReminderScreen = () => {
   const [email, setEmail] = useState<string>("");
@@ -28,9 +22,6 @@ const SetReminderScreen = () => {
     startDate: null,
     endDate: null,
   });
-
-  // TODO: Add state for API errors
-  const [apiError, setApiError] = useState<string>("");
 
   const handleDateChange = (params: { startDate: any; endDate: any }) => {
     const { startDate, endDate } = params;
@@ -62,50 +53,17 @@ const SetReminderScreen = () => {
     return true;
   };
 
-  // TODO: API Integration
-  // - Create API service/client for all reminder-related API calls
-  // - Add error handling for network failures
-  // - Add loading states for API calls
-  // - Consider adding retry logic for failed requests
-
   const onSave = () => {
-    // TODO: Format dates to match backend expectations
-    // - Ensure timezone handling is consistent
-    // - Consider using ISO 8601 format for dates
-    // - Ensure date format matches Python backend parsing
-
-    // TODO: Add request body type validation
-    // type ReminderRequest = {
-    //   email: string;
-    //   startDate: string;
-    //   endDate: string;
-    //   hut: string;
-    // };
-
     if (!validateForm()) return;
     setIsLoading(true);
 
-    // TODO: API Integration
     // - Make POST request to backend endpoint (e.g., /api/reminders)
-    // - Request body should include:
-    //   {
-    //     email: string,
-    //     startDate: string (ISO format),
-    //     endDate: string (ISO format),
-    //     hut: string
-    //   }
-    // - Add proper error handling for:
-    //   - Network errors
-    //   - Validation errors from backend
-    //   - Server errors
-    // - Show appropriate error messages to user
-    // - Only navigate away on successful response
 
     Alert.alert("Success", "Reminder saved successfully!", [
       {
         text: "OK",
         onPress: () => {
-          // TODO: Add navigation to ViewRemindersScreen
+          // Add navigation to ViewRemindersScreen
         },
       },
     ]);

@@ -44,24 +44,9 @@ const MOCK_REMINDERS: Reminder[] = [
   },
 ];
 
-// TODO: API Integration
-// - Add types that match backend response structure
-type APIReminder = {
-  // Ensure these match exactly what Python backend returns
-  id: string; // Check if backend uses string or number
-  email: string;
-  startDate: string; // Confirm date format from backend
-  endDate: string;
-  hut: string;
-  // Add any additional fields backend might return
-};
-
 const ViewRemindersScreen = () => {
   const [email, setEmail] = useState("");
   const [userReminders, setUserReminders] = useState<Reminder[]>([]);
-  // TODO: Add API error handling state
-  const [isLoading, setIsLoading] = useState(false);
-  const [apiError, setApiError] = useState<string>("");
 
   const formatDateRange = (startDate: string, endDate: string) => {
     const start = dayjs(startDate).format("MMM. D, YYYY");
@@ -83,7 +68,6 @@ const ViewRemindersScreen = () => {
   };
 
   const handleEdit = (reminderId: string) => {
-    // TODO: API Integration
     // - Make PUT request to backend endpoint (e.g., /api/reminders/{reminderId})
     // - Send updated reminder data
     // - Refresh reminders list after successful update
@@ -91,10 +75,8 @@ const ViewRemindersScreen = () => {
   };
 
   const handleDelete = (reminderId: string) => {
-    // TODO: Add optimistic updates
     // - Remove from UI immediately
     // - Restore if API call fails
-    // TODO: Consider batch delete functionality if backend supports it
   };
 
   return (
