@@ -25,15 +25,12 @@ def initialize_driver():
 def select_winter_option(driver):
     """Select 'Winter' option from dropdown and wait for page to reload"""
     try: 
-        # Step 3: Locate the dropdown menu 
         dropdown = WebDriverWait(driver,10).until(
             EC.presence_of_element_located((By.ID, "seasonal_year"))
         )
-        # Step 4: Interact with the dropdown menu - ensure that the dropdown is selecting the "Winter" option
         select = Select(dropdown)
         select.select_by_visible_text("Winter 2024-2025")
 
-        # Step 5: Wait for the page to update
         WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.TAG_NAME, "table"))  
         )
@@ -103,6 +100,10 @@ def locate_dates(driver):
 def locate_availability(driver):
     """Locate availability for each hut on the page."""
     try:
+        # Get our list of hut names first
+        hut_names = locate_hut_names(driver)
+        logger.info(f"Found {len(hut_names)} huts")
+        
         # Get dates
         dates = locate_dates(driver)
         if not dates:
@@ -117,38 +118,27 @@ def locate_availability(driver):
         rows = second_table.find_elements(By.TAG_NAME, "tr")[1:]  # Skip header row
         
         availability_data = []
-        for row in rows:
+        for index, hut_name in enumerate(hut_names):
+            if index >= len(rows): 
+                break
+                
+            row = rows[index]
             cells = row.find_elements(By.TAG_NAME, "td")
-            if not cells:
-                continue
             
-            # Get hut name using the same approach as locate_hut_names
-            try:
-                first_cell = cells[0]
-                span = first_cell.find_element(By.CLASS_NAME, "rooms")
-                name_div = span.find_element(By.CLASS_NAME, "name")
-                hut_name = name_div.text.strip()
-                
-                if not hut_name:
-                    continue
-                
-                hut_availability = {
-                    "hut": hut_name,
-                    "availability": {}
-                }
-                
-                # Loop through each date cell (skip first cell which is hut name)
-                for i, cell in enumerate(cells[1:]):
-                    if i >= len(dates):  # Prevent index out of range
-                        break
-                    date = dates[i]
-                    is_vacant = 'vacant' in cell.get_attribute('class').lower()
-                    hut_availability["availability"][date] = is_vacant
+            hut_availability = {
+                "hut": hut_name,
+                "availability": {}
+            }
+            
+            # Loop through each date cell
+            for i, cell in enumerate(cells):
+                if i >= len(dates):  # Prevent index out of range
+                    break
+                date = dates[i]
+                is_vacant = 'vacant' in cell.get_attribute('class').lower()
+                hut_availability["availability"][date] = is_vacant
 
-                availability_data.append(hut_availability)
-                
-            except NoSuchElementException:
-                continue
+            availability_data.append(hut_availability)
 
         return availability_data
 
@@ -164,10 +154,7 @@ if __name__ == "__main__":
     driver = initialize_driver()
     select_winter_option(driver)
     huts = locate_hut_names(driver)
-    print("Hut Names:", huts)
     dates = locate_dates(driver)
-    # print("Dates:", dates)
-    
     # Get and print availability in a more readable format
     availability = locate_availability(driver)
     print("\n=== Availability Data ===")
