@@ -6,6 +6,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.ui import Select
 from datetime import datetime
+import logging
+from selenium.common.exceptions import NoSuchElementException, TimeoutException, WebDriverException
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -36,7 +38,7 @@ def select_winter_option(driver):
             EC.presence_of_element_located((By.TAG_NAME, "table"))  
         )
         print("Selected 'Winter' from the dropdown.")
-    except Exception as e:
+    except (TimeoutException, WebDriverException) as e:
         logger.error(f"Error selecting winter option: {e}")
 
 # Step 6: Locate the table or hut data on the page
@@ -49,9 +51,7 @@ def locate_hut_names(driver):
         if not tables:
             logger.warning("No tables found.")
             return []
-        table = tables[0]  
-        logger.info("First table found.")
-        
+        table = tables[0]       
         rows = table.find_elements(By.TAG_NAME, "tr")
 
         hut_names = []
@@ -64,12 +64,14 @@ def locate_hut_names(driver):
                     name_divs = span.find_elements(By.CLASS_NAME, "name")
                     for div in name_divs:
                         hut_names.append(div.text)
-                except:
+                except NoSuchElementException as e:
                     continue
+                except WebDriverException as e:
+                    logger.error(f"Error locating hut names: {e}")
 
         return hut_names
 
-    except Exception as e:
+    except (TimeoutException, NoSuchElementException, WebDriverException) as e:
         logger.error(f"Error locating hut names: {e}")
         return []
 
@@ -94,75 +96,85 @@ def locate_dates(driver):
             dates.append(full_date)
 
         return dates
-
-    except Exception as e:
+    except (TimeoutException, NoSuchElementException) as e:
         logger.error(f"Error locating dates: {e}")
         return []
 
 def locate_availability(driver):
     """Locate availability for each hut on the page."""
     try:
+        # Get dates
+        dates = locate_dates(driver)
+        if not dates:
+            logger.error("No dates found in table")
+            return []
+            
+        # Find the availability table
         tables = WebDriverWait(driver, 10).until(
             EC.presence_of_all_elements_located((By.TAG_NAME, "table"))
         )
-        # Assuming the availability is in the second table
         second_table = tables[1]
-
-        rows = second_table.find_elements(By.TAG_NAME, "tr")
-
+        rows = second_table.find_elements(By.TAG_NAME, "tr")[1:]  # Skip header row
+        
         availability_data = []
-        for row in rows[1:]:  # Skipping the first row as it's for dates
+        for row in rows:
             cells = row.find_elements(By.TAG_NAME, "td")
+            if not cells:
+                continue
             
-            hut_availability = {}
-            
-            # Loop through each cell in the row (representing a date)
-            for i, cell in enumerate(cells):
-                # Find the corresponding date
-                date = dates[i]  # Ensure you have the 'dates' list available
+            # Get hut name using the same approach as locate_hut_names
+            try:
+                first_cell = cells[0]
+                span = first_cell.find_element(By.CLASS_NAME, "rooms")
+                name_div = span.find_element(By.CLASS_NAME, "name")
+                hut_name = name_div.text.strip()
                 
-                # Check if the cell is vacant or not
-                is_vacant = 'vacant' in cell.get_attribute('class')
+                if not hut_name:
+                    continue
                 
-                # Save the hut's availability for the corresponding date
-                hut_availability[date] = is_vacant
+                hut_availability = {
+                    "hut": hut_name,
+                    "availability": {}
+                }
+                
+                # Loop through each date cell (skip first cell which is hut name)
+                for i, cell in enumerate(cells[1:]):
+                    if i >= len(dates):  # Prevent index out of range
+                        break
+                    date = dates[i]
+                    is_vacant = 'vacant' in cell.get_attribute('class').lower()
+                    hut_availability["availability"][date] = is_vacant
 
-            # Append the hut's availability to the overall list
-            availability_data.append(hut_availability)
+                availability_data.append(hut_availability)
+                
+            except NoSuchElementException:
+                continue
 
         return availability_data
 
     except Exception as e:
-        logger.error(f"Error locating availability: {e}")
+        logger.error(f"Error in locate_availability: {e}")
         return []
 
-
-
 # Store this in the DB in the Hut model
-# might need to extract the hut name and dates of the columns from the table first?
-
-
-# Step 7: Extract data from the table
-# Go thrtough  header row and build an array of dates
-# Go through each row hut to see if data is "filled" or "vacant" set boolean isVacant
-# then need to go through each availability cell
-# - Loop through the rows and cells of the table to extract the text or data you need
-
-
 # Store into the Availabliity model?
-
 # Step 8: Process or store the extracted data
-# - Save the scraped data to a database? In the 
-
-
-# Step 9: Close the WebDriver
-# - After completing the scraping, close the browser session to free up system resources.
 
 if __name__ == "__main__":
     driver = initialize_driver()
-    select_winter_option(driver);
+    select_winter_option(driver)
     huts = locate_hut_names(driver)
     print("Hut Names:", huts)
     dates = locate_dates(driver)
-    print("Dates:", dates)
-    driver.quit();
+    # print("Dates:", dates)
+    
+    # Get and print availability in a more readable format
+    availability = locate_availability(driver)
+    print("\n=== Availability Data ===")
+    for hut_data in availability:
+        print(f"\nHut: {hut_data['hut']}")
+        print("Availability:")
+        for date, is_vacant in hut_data['availability'].items():
+            print(f"  {date}: {'Available' if is_vacant else 'Not Available'}")
+    
+    driver.quit()
