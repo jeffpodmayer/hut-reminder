@@ -15,9 +15,6 @@ def create_app():
 
     @app.route('/')
     def home():
-        print(Hut.__tablename__)
-        print(Availability.__tablename__)
-        print(Reminder.__tablename__)
         return "Hello, Flask!"
 
     return app

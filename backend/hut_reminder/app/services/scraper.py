@@ -165,8 +165,11 @@ class Scraper:
             self.select_winter_option()
             availability = self.locate_availability()
             return availability
+        except Exception as e:
+            self.logger.error(f"Error during scraping: {e}")
+            return []
         finally:
-            if self.driver:
+            if hasattr(self, 'driver') and self.driver:
                 self.driver.quit()
 
 if __name__ == "__main__":
