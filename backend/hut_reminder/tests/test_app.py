@@ -27,15 +27,6 @@ class TestApp(unittest.TestCase):
         self.assertEqual(self.app.config['SQLALCHEMY_TRACK_MODIFICATIONS'], False)
         self.assertTrue('sqlite' in self.app.config['SQLALCHEMY_DATABASE_URI'])
 
-    # def test_db_initialization(self):
-    #     """Test database initialization."""
-    #     self.assertIsInstance(db, SQLAlchemy)
-    #     # Test that tables were created
-    #     with self.app.app_context():
-    #         tables = db.engine.table_names()
-    #         expected_tables = ['hut', 'availability', 'reminder']  # Add your table names
-    #         for table in expected_tables:
-    #             self.assertIn(table, tables)
 
     def test_home_route(self):
         """Test the home route."""
