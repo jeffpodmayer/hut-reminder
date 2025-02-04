@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from models import db, Hut, Availability, Reminder
+from .models import db, Hut, Availability, Reminder
 
 def create_app():
     app = Flask(__name__)
