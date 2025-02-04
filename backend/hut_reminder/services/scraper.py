@@ -24,8 +24,8 @@ class Scraper:
     def initialize_driver(self):
         """Set up and return a Selenium WebDriver."""
         options = webdriver.ChromeOptions()
-        options.add_argument('--headless=new')  # Use new headless mode
-        options.add_argument('--disable-gpu')  # Required for some systems
+        options.add_argument('--headless=new') 
+        options.add_argument('--disable-gpu')  
         options.add_argument('--no-sandbox')
         options.add_argument('--disable-dev-shm-usage')
         
