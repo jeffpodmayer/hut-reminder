@@ -1,10 +1,14 @@
 # Process availability data from the scraper and save to database
 
 # Required imports will include:
-# - database models/session
-# - datetime for timestamps
-# - logging for debug info
-# - typing for type hints
+from datetime import datetime
+from logging import getLogger
+from typing import List, Dict
+from scraper import Scraper
+
+from app.models.hut import Hut
+from app.models.availability import Availability
+
 
 class AvailabilityProcessor:
     """
