@@ -4,13 +4,20 @@
 from datetime import datetime
 from logging import getLogger
 from typing import List, Dict
-from scraper import Scraper
+from .scraper import Scraper
 
-from app.models.hut import Hut
-from app.models.availability import Availability
+from .. import db  # Correctly import the db instance
+from ..models.hut import Hut  # Import the Hut model
+
+from ..models.availability import Availability
 
 
 class AvailabilityProcessor:
+
+
+
+
+    
     """
     Process hut availability data and save to database.
     
@@ -22,6 +29,11 @@ class AvailabilityProcessor:
     - Handle any data conflicts or updates
     """
     
+
+
+
+
+
     # TODO: Add methods for:
     # - Processing scraped data
     # - Updating hut information
@@ -44,12 +56,26 @@ class AvailabilityProcessor:
 # Trigger a remider and change the availablity object to refeclt the change
 # Save the object to the database
 
+def add_huts_to_database():
+    scraper = Scraper.new()  # Create a new Scraper instance
+    scraper.initialize_driver()  # Initialize the WebDriver
 
+    try:
+        hut_names = scraper._locate_hut_names()  # Call the method to get hut names
+        print(hut_names)  # Print the hut names for verification
+    except Exception as e:
+        print(f"Error while locating hut names: {e}")
+        return  # Exit the function if there's an error
 
+    for hut_name in hut_names:
+        # Create a new Hut instance
+        new_hut = Hut(name=hut_name)  # Use the name field from the Hut model
+        db.session.add(new_hut)  # Add the new hut to the session
+        print(f"Added hut: {new_hut.name}")  # Print the name of the hut being added
 
-if __name__ == "__main__":
-    scraper = Scraper.new()
-    data = scraper.scrape()
-    processor = AvailabilityProcessor()
-    # Create process_availability method
-    processor.process_availability(data) 
+    try:
+        db.session.commit()  # Commit the session to save changes
+        print(f"Added {len(hut_names)} huts to the database.")
+    except Exception as e:
+        print(f"Error committing to the database: {e}")
+        db.session.rollback()  # Rollback the session in case of error

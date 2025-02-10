@@ -16,10 +16,10 @@ class Scraper:
         self.driver = None
         self.logger = logging.getLogger(__name__)
 
-    # @classmethod
-    # def new(cls):
-    #     """Factory method to create a new Scraper instance"""
-    #     return cls()
+    @classmethod
+    def new(cls):
+        """Factory method to create a new Scraper instance"""
+        return cls()
 
     def initialize_driver(self):
         """Set up and return a Selenium WebDriver."""
