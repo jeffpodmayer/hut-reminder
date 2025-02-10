@@ -16,10 +16,10 @@ class Scraper:
         self.driver = None
         self.logger = logging.getLogger(__name__)
 
-    @classmethod
-    def new(cls):
-        """Factory method to create a new Scraper instance"""
-        return cls()
+    # @classmethod
+    # def new(cls):
+    #     """Factory method to create a new Scraper instance"""
+    #     return cls()
 
     def initialize_driver(self):
         """Set up and return a Selenium WebDriver."""
@@ -100,7 +100,8 @@ class Scraper:
                 month = int(date_text.split('/')[0])
                 day = int(date_text.split('/')[1])
                 current_year = datetime.now().year
-                year = current_year if month == 12 else current_year + 1
+                # Might be a bug here for the years....
+                year = current_year if month == 12 else current_year + 1 
                 
                 full_date = datetime.strptime(f"{year}-{month:02d}-{day:02d}", "%Y-%m-%d").date()
                 dates.append(full_date)
