@@ -100,8 +100,10 @@ class Scraper:
                 month = int(date_text.split('/')[0])
                 day = int(date_text.split('/')[1])
                 current_year = datetime.now().year
-                # Might be a bug here for the years....
-                year = current_year if month == 12 else current_year + 1 
+                if month == 12:
+                    year = current_year + 1  
+                else:
+                    year = current_year 
                 
                 full_date = datetime.strptime(f"{year}-{month:02d}-{day:02d}", "%Y-%m-%d").date()
                 dates.append(full_date)
@@ -164,11 +166,15 @@ class Scraper:
         try:
             self.initialize_driver()
             self.select_winter_option()
-            availability = self.locate_availability()
-            return availability
+            
+            # Call locate_availability to get both hut names and their availability
+            availability_data = self.locate_availability()  # This now includes hut names
+            hut_names = [entry['hut'] for entry in availability_data]  # Extract hut names from availability data
+            
+            return hut_names, availability_data  # Return both hut names and availability data
         except Exception as e:
             self.logger.error(f"Error during scraping: {e}")
-            return []
+            return [], []  # Return empty lists on error
         finally:
             if hasattr(self, 'driver') and self.driver:
                 self.driver.quit()

@@ -68,6 +68,12 @@ def add_huts_to_database():
         return  # Exit the function if there's an error
 
     for hut_name in hut_names:
+        # Check if the hut already exists in the database
+        existing_hut = db.session.query(Hut).filter_by(name=hut_name).first()
+        if existing_hut:
+            print(f"Hut '{hut_name}' already exists. Skipping.")
+            continue  # Skip adding this hut if it already exists
+
         # Create a new Hut instance
         new_hut = Hut(name=hut_name)  # Use the name field from the Hut model
         db.session.add(new_hut)  # Add the new hut to the session
