@@ -56,32 +56,69 @@ class AvailabilityProcessor:
 # Trigger a remider and change the availablity object to refeclt the change
 # Save the object to the database
 
-def add_huts_to_database():
+def add_huts_and_availability_to_database():
     scraper = Scraper.new()  # Create a new Scraper instance
     scraper.initialize_driver()  # Initialize the WebDriver
 
     try:
-        hut_names = scraper._locate_hut_names()  # Call the method to get hut names
+        hut_names, availability_data = scraper.scrape()  # Call the scrape method
         print(hut_names)  # Print the hut names for verification
     except Exception as e:
-        print(f"Error while locating hut names: {e}")
+        print(f"Error while scraping: {e}")
         return  # Exit the function if there's an error
 
-    for hut_name in hut_names:
-        # Check if the hut already exists in the database
-        existing_hut = db.session.query(Hut).filter_by(name=hut_name).first()
-        if existing_hut:
-            print(f"Hut '{hut_name}' already exists. Skipping.")
-            continue  # Skip adding this hut if it already exists
+    add_huts(hut_names)  # Call the method to add huts
+    add_availability(availability_data)  # Call the method to add availability
 
-        # Create a new Hut instance
-        new_hut = Hut(name=hut_name)  # Use the name field from the Hut model
-        db.session.add(new_hut)  # Add the new hut to the session
-        print(f"Added hut: {new_hut.name}")  # Print the name of the hut being added
+def add_huts(hut_names):
+    for hut_name in hut_names:
+        existing_hut = db.session.query(Hut).filter_by(name=hut_name).first()
+        
+        if not existing_hut:
+            # If the hut does not exist, create it
+            existing_hut = Hut(name=hut_name)
+            db.session.add(existing_hut)
+            print(f"Added hut: {existing_hut.name}")  # Print the name of the hut being added
 
     try:
         db.session.commit()  # Commit the session to save changes
         print(f"Added {len(hut_names)} huts to the database.")
     except Exception as e:
-        print(f"Error committing to the database: {e}")
+        print(f"Error committing huts to the database: {e}")
+        db.session.rollback()  # Rollback the session in case of error
+
+def add_availability(availability_data):
+    for entry in availability_data:
+        hut_name = entry['hut']
+        existing_hut = db.session.query(Hut).filter_by(name=hut_name).first()
+        
+        if existing_hut:
+            # Now add or update the availability for this hut
+            for date, is_vacant in entry['availability'].items():
+                # Check if the availability record already exists
+                existing_availability = db.session.query(Availability).filter_by(
+                    hut_id=existing_hut.id,
+                    date=date
+                ).first()
+                
+                if existing_availability:
+                    # If the record exists, check if the is_vacant value has changed
+                    if existing_availability.is_vacant != is_vacant:
+                        existing_availability.is_vacant = is_vacant  # Update the value
+                        print(f"Updated availability for {hut_name} on {date} to {'vacant' if is_vacant else 'not vacant'}.")
+                else:
+                    # If the record does not exist, create a new availability record
+                    availability_record = Availability(
+                        hut_id=existing_hut.id,
+                        date=date,
+                        is_vacant=is_vacant
+                    )
+                    db.session.add(availability_record)  # Add availability record to the session
+                    print(f"Added availability for {hut_name} on {date} as {'vacant' if is_vacant else 'not vacant'}.")
+    
+    try:
+        db.session.commit()  # Commit the session to save changes
+        print(f"Added/Updated availability data in the database.")
+    except Exception as e:
+        print(f"Error committing availability to the database: {e}")
         db.session.rollback()  # Rollback the session in case of error
