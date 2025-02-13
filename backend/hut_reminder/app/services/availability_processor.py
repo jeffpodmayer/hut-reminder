@@ -1,12 +1,9 @@
-# Process availability data from the scraper and save to database
-
-# Required imports will include:
 from datetime import datetime
 from logging import getLogger
 from typing import List, Dict
 from .scraper import Scraper
-from .. import db  # Correctly import the db instance
-from ..models.hut import Hut  # Import the Hut model
+from .. import db  
+from ..models.hut import Hut 
 from ..models.availability import Availability
 
 
