@@ -5,21 +5,18 @@ import {
   TextInput,
   TouchableOpacity,
   Alert,
-  Modal,
-  FlatList,
 } from "react-native";
 import DateTimePicker from "react-native-ui-datepicker";
-import { Picker } from "@react-native-picker/picker";
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
-import MultiSelect from "react-native-multiple-select";
+import { Select, SelectItem, IndexPath } from "@ui-kitten/components";
 
 const SetReminderScreen = () => {
   const [email, setEmail] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
   const [emailError, setEmailError] = useState<string>("");
   const [huts, setHuts] = useState<any[]>([]);
-  const [selectedHuts, setSelectedHuts] = useState<string[]>([]);
+  const [selectedHuts, setSelectedHuts] = useState<IndexPath[]>([]);
   const [error, setError] = useState<string>("");
 
   const [dateRange, setDateRange] = useState<{
@@ -29,9 +26,6 @@ const SetReminderScreen = () => {
     startDate: null,
     endDate: null,
   });
-
-  // State for modal visibility
-  const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
     const fetchHuts = async () => {
@@ -153,6 +147,14 @@ const SetReminderScreen = () => {
     }
   };
 
+  const renderSelectedHuts = () => {
+    if (selectedHuts.length === 0) return "Select Huts";
+    if (selectedHuts.length === huts.length) return "All Huts Selected";
+    return selectedHuts
+      .map((indexPath) => huts[indexPath.row].name.split(" ")[0])
+      .join(", ");
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.emailContainer}>
@@ -174,46 +176,18 @@ const SetReminderScreen = () => {
       </View>
       <View style={styles.hutContainer}>
         <Text style={styles.inputLabel}>Select Huts</Text>
-        <View
-          style={{
-            height: 50,
-            width: "90%",
-            borderWidth: 1,
-            borderRadius: 10,
-            padding: 10,
-            marginVertical: 10,
-          }}
+        <Select
+          multiSelect={true}
+          selectedIndex={selectedHuts}
+          onSelect={(indexPaths) => setSelectedHuts(indexPaths)}
+          value={renderSelectedHuts()}
+          placeholder="Search Huts..."
+          style={styles.select}
         >
-          <MultiSelect
-            hideSubmitButton={true}
-            hideTags={true}
-            items={huts.map((hut) => ({
-              id: hut.id.toString(),
-              name: hut.name,
-            }))}
-            uniqueKey="id"
-            onSelectedItemsChange={setSelectedHuts}
-            selectedItems={selectedHuts}
-            selectText={
-              huts.length === 0
-                ? "Select Huts"
-                : selectedHuts.length === huts.length
-                ? "All Huts Selected"
-                : `${selectedHuts
-                    .map(
-                      (id) =>
-                        huts
-                          .find((hut) => hut.id.toString() === id)
-                          ?.name.split(" ")[0]
-                    )
-                    .filter(Boolean)
-                    .join(", ")}`
-            }
-            searchInputPlaceholderText="Search Huts..."
-            itemTextColor="#000"
-            displayKey="name"
-          />
-        </View>
+          {huts.map((hut, index) => (
+            <SelectItem key={hut.id.toString()} title={hut.name} />
+          ))}
+        </Select>
       </View>
       <View style={styles.dateContainer}>
         <Text style={styles.inputLabel}>Date Range of Reminder</Text>
@@ -265,6 +239,7 @@ const styles = StyleSheet.create({
     width: "100%",
     paddingTop: 45,
   },
+  select: {},
   picker: {
     width: "90%",
     height: 50,
