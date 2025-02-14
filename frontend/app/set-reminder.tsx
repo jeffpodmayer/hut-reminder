@@ -12,14 +12,15 @@ import DateTimePicker from "react-native-ui-datepicker";
 import { Picker } from "@react-native-picker/picker";
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
+import MultiSelect from "react-native-multiple-select";
 
 const SetReminderScreen = () => {
   const [email, setEmail] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
   const [emailError, setEmailError] = useState<string>("");
   const [huts, setHuts] = useState<any[]>([]);
+  const [selectedHuts, setSelectedHuts] = useState<string[]>([]);
   const [error, setError] = useState<string>("");
-  const [selectedHut, setSelectedHut] = useState<number | null>(null);
 
   const [dateRange, setDateRange] = useState<{
     startDate: dayjs.Dayjs | null;
@@ -82,8 +83,8 @@ const SetReminderScreen = () => {
       Alert.alert("Error", "Please select a date range!");
       return false;
     }
-    if (selectedHut === null) {
-      Alert.alert("Error", "Please select a hut!");
+    if (selectedHuts.length === 0) {
+      Alert.alert("Error", "Please select at least one hut!");
       return false;
     }
     return true;
@@ -94,18 +95,13 @@ const SetReminderScreen = () => {
     setIsLoading(true);
 
     // Prepare the data to send
-    const hutId = selectedHut; // Use the selected hut ID
-    if (hutId === null) {
-      Alert.alert("Error", "Please select a hut!");
-      setIsLoading(false);
-      return; // Exit if no hut is selected
-    }
+    const hutIds = selectedHuts.map((id) => Number(id));
 
     createReminder(
       email,
       dateRange.startDate ? dateRange.startDate.format("YYYY-MM-DD") : "",
       dateRange.endDate ? dateRange.endDate.format("YYYY-MM-DD") : "",
-      hutId // Now hutId is guaranteed to be a number
+      hutIds
     )
       .then(() => {
         Alert.alert("Success", "Reminder saved successfully!", [
@@ -129,7 +125,7 @@ const SetReminderScreen = () => {
     email: string,
     startDate: string,
     endDate: string,
-    hutId: number
+    hutIds: number[]
   ) => {
     try {
       const response = await fetch("http://your-backend-url/api/reminders", {
@@ -141,7 +137,7 @@ const SetReminderScreen = () => {
           user_email: email,
           start_date: startDate,
           end_date: endDate,
-          hut_id: hutId,
+          hut_ids: hutIds,
         }),
       });
 
@@ -177,14 +173,47 @@ const SetReminderScreen = () => {
         {emailError ? <Text style={styles.errorText}>{emailError}</Text> : null}
       </View>
       <View style={styles.hutContainer}>
-        <Text style={styles.inputLabel}>Select a Hut</Text>
-        <TouchableOpacity onPress={() => setModalVisible(true)}>
-          <Text style={styles.picker}>
-            {selectedHut
-              ? huts.find((hut) => hut.id === selectedHut)?.name
-              : "Select a Hut"}
-          </Text>
-        </TouchableOpacity>
+        <Text style={styles.inputLabel}>Select Huts</Text>
+        <View
+          style={{
+            height: 50,
+            width: "90%",
+            borderWidth: 1,
+            borderRadius: 10,
+            padding: 10,
+            marginVertical: 10,
+          }}
+        >
+          <MultiSelect
+            hideSubmitButton={true}
+            hideTags={true}
+            items={huts.map((hut) => ({
+              id: hut.id.toString(),
+              name: hut.name,
+            }))}
+            uniqueKey="id"
+            onSelectedItemsChange={setSelectedHuts}
+            selectedItems={selectedHuts}
+            selectText={
+              huts.length === 0
+                ? "Select Huts"
+                : selectedHuts.length === huts.length
+                ? "All Huts Selected"
+                : `${selectedHuts
+                    .map(
+                      (id) =>
+                        huts
+                          .find((hut) => hut.id.toString() === id)
+                          ?.name.split(" ")[0]
+                    )
+                    .filter(Boolean)
+                    .join(", ")}`
+            }
+            searchInputPlaceholderText="Search Huts..."
+            itemTextColor="#000"
+            displayKey="name"
+          />
+        </View>
       </View>
       <View style={styles.dateContainer}>
         <Text style={styles.inputLabel}>Date Range of Reminder</Text>
@@ -203,7 +232,6 @@ const SetReminderScreen = () => {
           selectedItemColor="#0047FF"
         />
       </View>
-      {/* Display dates on screen here */}
       <TouchableOpacity
         style={[styles.button, isLoading && styles.buttonDisabled]}
         onPress={onSave}
@@ -213,25 +241,6 @@ const SetReminderScreen = () => {
           {isLoading ? "Saving..." : "Save Reminder"}
         </Text>
       </TouchableOpacity>
-
-      <Modal visible={modalVisible} transparent={true}>
-        <View style={styles.modalContainer}>
-          <FlatList
-            data={huts}
-            keyExtractor={(item) => item.id.toString()}
-            renderItem={({ item }) => (
-              <TouchableOpacity
-                onPress={() => {
-                  setSelectedHut(item.id);
-                  setModalVisible(false);
-                }}
-              >
-                <Text style={styles.modalItem}>{item.name}</Text>
-              </TouchableOpacity>
-            )}
-          />
-        </View>
-      </Modal>
     </View>
   );
 };
