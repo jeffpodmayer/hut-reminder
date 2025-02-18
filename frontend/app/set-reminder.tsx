@@ -212,6 +212,7 @@ const SetReminderScreen = () => {
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
             <Text style={styles.inputLabel}>Select Huts</Text>
+            <Text style={styles.description}>Choose 1 or more</Text>
             <ScrollView style={styles.hutList}>
               {huts.map((hut) => (
                 <TouchableOpacity
@@ -228,7 +229,7 @@ const SetReminderScreen = () => {
               ))}
             </ScrollView>
             <TouchableOpacity onPress={toggleModal}>
-              <Text style={styles.buttonText}>Done</Text>
+              <Text style={styles.doneButtonText}>Done</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -259,8 +260,8 @@ const styles = StyleSheet.create({
     paddingTop: 5,
   },
   hutList: {
-    maxHeight: 200,
-    width: "90%",
+    maxHeight: 400,
+    width: "100%",
     borderWidth: 1,
     borderRadius: 10,
     borderColor: "#ccc",
@@ -355,6 +356,12 @@ const styles = StyleSheet.create({
   buttonDisabled: {
     opacity: 0.6,
   },
+  doneButtonText: {
+    fontSize: 25,
+    color: "black",
+  },
+
+  // MODAL STYLES
   modalContainer: {
     flex: 1,
     justifyContent: "center",
@@ -366,6 +373,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "#ccc",
   },
+
   modalContent: {
     backgroundColor: "white",
     padding: 20,
