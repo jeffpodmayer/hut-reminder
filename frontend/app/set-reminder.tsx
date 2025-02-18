@@ -5,19 +5,21 @@ import {
   TextInput,
   TouchableOpacity,
   Alert,
+  ScrollView,
+  Modal,
 } from "react-native";
 import DateTimePicker from "react-native-ui-datepicker";
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
-import { Select, SelectItem, IndexPath } from "@ui-kitten/components";
 
 const SetReminderScreen = () => {
   const [email, setEmail] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
   const [emailError, setEmailError] = useState<string>("");
   const [huts, setHuts] = useState<any[]>([]);
-  const [selectedHuts, setSelectedHuts] = useState<IndexPath[]>([]);
+  const [selectedHuts, setSelectedHuts] = useState<string[]>([]);
   const [error, setError] = useState<string>("");
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const [dateRange, setDateRange] = useState<{
     startDate: dayjs.Dayjs | null;
@@ -60,10 +62,7 @@ const SetReminderScreen = () => {
   };
 
   const validateForm = () => {
-    // Reset error
     setEmailError("");
-
-    // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!email) {
       setEmailError("Email is required!");
@@ -147,12 +146,16 @@ const SetReminderScreen = () => {
     }
   };
 
-  const renderSelectedHuts = () => {
-    if (selectedHuts.length === 0) return "Select Huts";
-    if (selectedHuts.length === huts.length) return "All Huts Selected";
-    return selectedHuts
-      .map((indexPath) => huts[indexPath.row].name.split(" ")[0])
-      .join(", ");
+  const toggleHutSelection = (hutId: string) => {
+    setSelectedHuts((prev) =>
+      prev.includes(hutId)
+        ? prev.filter((id) => id !== hutId)
+        : [...prev, hutId]
+    );
+  };
+
+  const toggleModal = () => {
+    setIsModalVisible(!isModalVisible);
   };
 
   return (
@@ -175,19 +178,9 @@ const SetReminderScreen = () => {
         {emailError ? <Text style={styles.errorText}>{emailError}</Text> : null}
       </View>
       <View style={styles.hutContainer}>
-        <Text style={styles.inputLabel}>Select Huts</Text>
-        <Select
-          multiSelect={true}
-          selectedIndex={selectedHuts}
-          onSelect={(indexPaths) => setSelectedHuts(indexPaths)}
-          value={renderSelectedHuts()}
-          placeholder="Search Huts..."
-          style={styles.select}
-        >
-          {huts.map((hut, index) => (
-            <SelectItem key={hut.id.toString()} title={hut.name} />
-          ))}
-        </Select>
+        <TouchableOpacity style={styles.hutsButton} onPress={toggleModal}>
+          <Text style={styles.hutsButtonText}>Select Huts</Text>
+        </TouchableOpacity>
       </View>
       <View style={styles.dateContainer}>
         <Text style={styles.inputLabel}>Date Range of Reminder</Text>
@@ -215,6 +208,31 @@ const SetReminderScreen = () => {
           {isLoading ? "Saving..." : "Save Reminder"}
         </Text>
       </TouchableOpacity>
+      <Modal transparent={true} visible={isModalVisible} animationType="slide">
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text style={styles.inputLabel}>Select Huts</Text>
+            <ScrollView style={styles.hutList}>
+              {huts.map((hut) => (
+                <TouchableOpacity
+                  key={hut.id}
+                  style={[
+                    styles.hutOption,
+                    selectedHuts.includes(hut.id.toString()) &&
+                      styles.hutOptionSelected,
+                  ]}
+                  onPress={() => toggleHutSelection(hut.id.toString())}
+                >
+                  <Text style={styles.hutOptionText}>{hut.name}</Text>
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
+            <TouchableOpacity onPress={toggleModal}>
+              <Text style={styles.buttonText}>Done</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 };
@@ -232,14 +250,33 @@ const styles = StyleSheet.create({
     width: "100%",
     paddingTop: 45,
     paddingHorizontal: 20,
+    paddingBottom: 10,
   },
   hutContainer: {
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
-    paddingTop: 45,
+    paddingTop: 5,
   },
-  select: {},
+  hutList: {
+    maxHeight: 200,
+    width: "90%",
+    borderWidth: 1,
+    borderRadius: 10,
+    borderColor: "#ccc",
+  },
+  hutOption: {
+    padding: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: "#ccc",
+    backgroundColor: "white",
+  },
+  hutOptionSelected: {
+    backgroundColor: "#e6efff",
+  },
+  hutOptionText: {
+    fontSize: 16,
+  },
   picker: {
     width: "90%",
     height: 50,
@@ -274,9 +311,9 @@ const styles = StyleSheet.create({
   dateContainer: {
     justifyContent: "center",
     alignItems: "center",
-    paddingTop: 50,
+    paddingTop: 30,
     width: "90%",
-    marginBottom: 15,
+    // marginBottom: ,
   },
   description: {
     paddingBottom: 15,
@@ -328,5 +365,26 @@ const styles = StyleSheet.create({
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: "#ccc",
+  },
+  modalContent: {
+    backgroundColor: "white",
+    padding: 20,
+    borderRadius: 10,
+    width: "80%",
+    alignItems: "center",
+  },
+  hutsButtonText: {
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  hutsButton: {
+    borderColor: "black",
+    borderWidth: 2,
+    padding: 15,
+    margin: 10,
+    borderRadius: 10,
+    width: "85%",
+    alignItems: "center",
+    backgroundColor: "lightgray",
   },
 });
