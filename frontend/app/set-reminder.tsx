@@ -178,8 +178,26 @@ const SetReminderScreen = () => {
         {emailError ? <Text style={styles.errorText}>{emailError}</Text> : null}
       </View>
       <View style={styles.hutContainer}>
-        <TouchableOpacity style={styles.hutsButton} onPress={toggleModal}>
-          <Text style={styles.hutsButtonText}>Select Huts</Text>
+        <TouchableOpacity
+          style={[
+            styles.hutsButton,
+            selectedHuts.length > 0 && {
+              backgroundColor: "green",
+              borderColor: "white",
+            },
+          ]}
+          onPress={toggleModal}
+        >
+          <Text style={styles.hutsButtonText}>
+            {selectedHuts.length > 0 ? (
+              <Text style={{ color: "white" }}>
+                {selectedHuts.length} hut{selectedHuts.length > 1 ? "s" : ""}{" "}
+                selected
+              </Text>
+            ) : (
+              "Select Huts"
+            )}
+          </Text>
         </TouchableOpacity>
       </View>
       <View style={styles.dateContainer}>
@@ -228,8 +246,15 @@ const SetReminderScreen = () => {
                 </TouchableOpacity>
               ))}
             </ScrollView>
-            <TouchableOpacity onPress={toggleModal}>
-              <Text style={styles.doneButtonText}>Done</Text>
+            <TouchableOpacity
+              style={[
+                styles.button,
+                isLoading && styles.buttonDisabled,
+                { width: "50%", backgroundColor: "green" },
+              ]}
+              onPress={toggleModal}
+            >
+              <Text style={styles.buttonText}>Done</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -265,6 +290,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 10,
     borderColor: "#ccc",
+    marginBottom: 10,
   },
   hutOption: {
     padding: 15,
@@ -389,7 +415,6 @@ const styles = StyleSheet.create({
     borderColor: "black",
     borderWidth: 2,
     padding: 15,
-    margin: 10,
     borderRadius: 10,
     width: "85%",
     alignItems: "center",
