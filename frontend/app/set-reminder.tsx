@@ -89,6 +89,7 @@ const SetReminderScreen = () => {
 
     // Prepare the data to send
     const hutIds = selectedHuts.map((id) => Number(id));
+    console.log("Hut IDs:", hutIds);
 
     createReminder(
       email,

@@ -6,8 +6,9 @@ reminder_bp = Blueprint('reminder', __name__)
 
 @reminder_bp.route('/createReminder', methods=['POST'])
 def create_reminder():
-    print("Received request")
     data = request.get_json()  # Get the JSON data from the request
+    print("Received data:")
+    print(json.dumps(data, indent=2))
 
     # Validate the incoming data
     if not data or 'user_email' not in data or 'start_date' not in data or 'end_date' not in data or 'huts' not in data:
