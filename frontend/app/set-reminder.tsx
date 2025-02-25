@@ -96,16 +96,16 @@ const SetReminderScreen = () => {
       dateRange.endDate ? dateRange.endDate.format("YYYY-MM-DD") : "",
       hutIds
     )
-      .then(() => {
-        Alert.alert("Success", "Reminder saved successfully!", [
-          {
-            text: "OK",
-            onPress: () => {
-              // Optionally navigate to another screen
-            },
-          },
-        ]);
-      })
+      // .then(() => {
+      //   Alert.alert("Success", "Reminder saved successfully!", [
+      //     {
+      //       text: "OK",
+      //       onPress: () => {
+      //         // Optionally navigate to another screen
+      //       },
+      //     },
+      //   ]);
+      // })
       .catch((error) => {
         Alert.alert("Error", "Failed to save reminder.");
       })
@@ -121,28 +121,52 @@ const SetReminderScreen = () => {
     hutIds: number[]
   ) => {
     try {
-      const response = await fetch("http://your-backend-url/api/reminders", {
+      const requestPayload = {
+        user_email: email,
+        start_date: startDate,
+        end_date: endDate,
+        huts: hutIds,
+      };
+      console.log("Request payload:", requestPayload);
+
+      // Log the full URL being used
+      const url = "http://127.0.0.1:5000/createReminder";
+      console.log("Requesting URL:", url);
+
+      const response = await fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          user_email: email,
-          start_date: startDate,
-          end_date: endDate,
-          hut_ids: hutIds,
-        }),
+        body: JSON.stringify(requestPayload),
       });
 
-      const data = await response.json();
-      if (response.ok) {
+      // Log response details
+      console.log("Response status:", response.status);
+      console.log(
+        "Response headers:",
+        Object.fromEntries(response.headers.entries())
+      );
+
+      const responseText = await response.text();
+      console.log("Raw response:", responseText);
+
+      // Only try to parse if we got a JSON response
+      if (
+        response.ok &&
+        response.headers.get("content-type")?.includes("application/json")
+      ) {
+        const data = JSON.parse(responseText);
         console.log("Reminder created:", data);
-        // Optionally, navigate to another screen or show a success message
+        return data;
       } else {
-        console.error("Error creating reminder:", data.error);
+        throw new Error(
+          `Server responded with status ${response.status}: ${responseText}`
+        );
       }
     } catch (error) {
       console.error("Network error:", error);
+      throw error;
     }
   };
 
