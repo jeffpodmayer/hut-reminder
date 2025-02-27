@@ -11,6 +11,7 @@ import {
 import DateTimePicker from "react-native-ui-datepicker";
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 
 const SetReminderScreen = () => {
   const [email, setEmail] = useState<string>("");
@@ -20,7 +21,7 @@ const SetReminderScreen = () => {
   const [selectedHuts, setSelectedHuts] = useState<string[]>([]);
   const [error, setError] = useState<string>("");
   const [isModalVisible, setIsModalVisible] = useState(false);
-
+  const navigation = useNavigation();
   const [dateRange, setDateRange] = useState<{
     startDate: dayjs.Dayjs | null;
     endDate: dayjs.Dayjs | null;
@@ -37,15 +38,15 @@ const SetReminderScreen = () => {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        setHuts(data); // Set the huts state with the fetched data
+        setHuts(data);
       } catch (error) {
         if (error instanceof Error) {
-          setError(error.message); // Set error message if there's an error
+          setError(error.message);
         } else {
-          setError("An unknown error occurred."); // Fallback for unknown error types
+          setError("An unknown error occurred.");
         }
       } finally {
-        setIsLoading(false); // Set loading to false after fetching
+        setIsLoading(false);
       }
     };
 
@@ -83,38 +84,6 @@ const SetReminderScreen = () => {
     return true;
   };
 
-  const onSave = () => {
-    if (!validateForm()) return;
-    setIsLoading(true);
-
-    // Prepare the data to send
-    const hutIds = selectedHuts.map((id) => Number(id));
-    console.log("Hut IDs:", hutIds);
-
-    createReminder(
-      email,
-      dateRange.startDate ? dateRange.startDate.format("YYYY-MM-DD") : "",
-      dateRange.endDate ? dateRange.endDate.format("YYYY-MM-DD") : "",
-      hutIds
-    )
-      // .then(() => {
-      //   Alert.alert("Success", "Reminder saved successfully!", [
-      //     {
-      //       text: "OK",
-      //       onPress: () => {
-      //         // Optionally navigate to another screen
-      //       },
-      //     },
-      //   ]);
-      // })
-      .catch((error) => {
-        Alert.alert("Error", "Failed to save reminder.");
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
-
   const createReminder = async (
     email: string,
     startDate: string,
@@ -122,52 +91,49 @@ const SetReminderScreen = () => {
     hutIds: number[]
   ) => {
     try {
-      const requestPayload = {
-        user_email: email,
-        start_date: startDate,
-        end_date: endDate,
-        huts: hutIds,
-      };
-      console.log("Request payload:", requestPayload);
-
-      // Log the full URL being used
-      const url = "http://127.0.0.1:5000/createReminder";
-      console.log("Requesting URL:", url);
-
-      const response = await fetch(url, {
+      const response = await fetch("http://127.0.0.1:5000/createReminder", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(requestPayload),
+        body: JSON.stringify({
+          user_email: email,
+          start_date: startDate,
+          end_date: endDate,
+          huts: hutIds,
+        }),
       });
 
-      // Log response details
-      console.log("Response status:", response.status);
-      console.log(
-        "Response headers:",
-        Object.fromEntries(response.headers.entries())
-      );
-
-      const responseText = await response.text();
-      console.log("Raw response:", responseText);
-
-      // Only try to parse if we got a JSON response
-      if (
-        response.ok &&
-        response.headers.get("content-type")?.includes("application/json")
-      ) {
-        const data = JSON.parse(responseText);
-        console.log("Reminder created:", data);
-        return data;
-      } else {
-        throw new Error(
-          `Server responded with status ${response.status}: ${responseText}`
-        );
+      if (!response.ok) {
+        throw new Error(`Failed to create reminder: ${response.status}`);
       }
     } catch (error) {
       console.error("Network error:", error);
       throw error;
+    }
+  };
+
+  const onSave = async () => {
+    if (!validateForm()) return;
+    setIsLoading(true);
+
+    try {
+      const hutIds = selectedHuts.map((id) => Number(id));
+
+      await createReminder(
+        email,
+        dateRange.startDate ? dateRange.startDate.format("YYYY-MM-DD") : "",
+        dateRange.endDate ? dateRange.endDate.format("YYYY-MM-DD") : "",
+        hutIds
+      );
+
+      // Fix this to be cleaner!
+      navigation.navigate("index" as never);
+    } catch (error) {
+      console.error("Error:", error);
+      Alert.alert("Error", "Failed to save reminder.");
+    } finally {
+      setIsLoading(false);
     }
   };
 

@@ -32,7 +32,7 @@ def create_reminder():
     db.session.add_all(reminders)
     db.session.commit()
 
-    return '', 201
+    return jsonify({'message': 'Reminders created successfully'}), 201
 
 # @reminder_bp.route('/getReminders', methods=['GET'])
 # def get_reminders_by_email():
