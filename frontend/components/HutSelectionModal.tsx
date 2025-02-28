@@ -1,3 +1,4 @@
+import React from "react";
 import {
   View,
   Text,
@@ -10,26 +11,26 @@ import {
 interface HutSelectionModalProps {
   isVisible: boolean;
   onClose: () => void;
-  huts: Array<{ id: number; name: string }>;
+  huts: any[];
   selectedHuts: string[];
   onHutToggle: (hutId: string) => void;
   isLoading: boolean;
 }
 
-export const HutSelectionModal = ({
+export const HutSelectionModal: React.FC<HutSelectionModalProps> = ({
   isVisible,
   onClose,
   huts,
   selectedHuts,
   onHutToggle,
   isLoading,
-}: HutSelectionModalProps) => {
+}) => {
   return (
     <Modal transparent={true} visible={isVisible} animationType="slide">
       <View style={styles.modalContainer}>
         <View style={styles.modalContent}>
-          <Text style={styles.inputLabel}>Select Huts</Text>
-          <Text style={styles.description}>Choose 1 or more</Text>
+          <Text style={styles.title}>Select Huts</Text>
+          <Text style={styles.subtitle}>Choose 1 or more</Text>
           <ScrollView style={styles.hutList}>
             {huts.map((hut) => (
               <TouchableOpacity
@@ -46,11 +47,7 @@ export const HutSelectionModal = ({
             ))}
           </ScrollView>
           <TouchableOpacity
-            style={[
-              styles.button,
-              isLoading && styles.buttonDisabled,
-              { width: "50%", backgroundColor: "green" },
-            ]}
+            style={[styles.button, isLoading && styles.buttonDisabled]}
             onPress={onClose}
           >
             <Text style={styles.buttonText}>Done</Text>
@@ -75,23 +72,17 @@ const styles = StyleSheet.create({
     width: "80%",
     alignItems: "center",
   },
-  inputLabel: {
+  title: {
     fontSize: 20,
     fontWeight: "bold",
+    marginBottom: 5,
   },
-  description: {
-    paddingBottom: 15,
-    paddingTop: 10,
-    textAlign: "center",
-    width: "80%",
+  subtitle: {
+    marginBottom: 15,
   },
   hutList: {
     maxHeight: 400,
     width: "100%",
-    borderWidth: 1,
-    borderRadius: 10,
-    borderColor: "#ccc",
-    marginBottom: 10,
   },
   hutOption: {
     padding: 15,
@@ -106,16 +97,17 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   button: {
-    borderColor: "none",
-    borderWidth: 2,
+    backgroundColor: "green",
     padding: 15,
-    margin: 10,
     borderRadius: 10,
+    width: "50%",
     alignItems: "center",
+    marginTop: 10,
   },
   buttonText: {
-    fontSize: 25,
     color: "white",
+    fontSize: 16,
+    fontWeight: "bold",
   },
   buttonDisabled: {
     opacity: 0.6,

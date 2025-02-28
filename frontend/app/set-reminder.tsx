@@ -12,7 +12,7 @@ import DateTimePicker from "react-native-ui-datepicker";
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { HutSelectionModal } from "./components/HutSelectionModal";
+import { HutSelectionModal } from "../components/HutSelectionModal";
 
 interface Reminder {
   user_email: string;
