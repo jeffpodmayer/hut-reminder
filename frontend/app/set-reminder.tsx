@@ -5,8 +5,6 @@ import {
   TextInput,
   TouchableOpacity,
   Alert,
-  ScrollView,
-  Modal,
 } from "react-native";
 import DateTimePicker from "react-native-ui-datepicker";
 import dayjs from "dayjs";
@@ -255,25 +253,11 @@ const styles = StyleSheet.create({
     width: "100%",
     paddingTop: 5,
   },
-  hutList: {
-    maxHeight: 400,
-    width: "100%",
-    borderWidth: 1,
-    borderRadius: 10,
-    borderColor: "#ccc",
-    marginBottom: 10,
-  },
-  hutOption: {
-    padding: 15,
-    borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
-    backgroundColor: "white",
-  },
-  hutOptionSelected: {
-    backgroundColor: "#e6efff",
-  },
-  hutOptionText: {
-    fontSize: 16,
+  dateContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    paddingTop: 30,
+    width: "90%",
   },
   picker: {
     width: "90%",
@@ -293,7 +277,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
   },
-
   inputLabel: {
     fontSize: 20,
     fontWeight: "bold",
@@ -305,13 +288,6 @@ const styles = StyleSheet.create({
     padding: 15,
     width: "95%",
     borderRadius: 10,
-  },
-  dateContainer: {
-    justifyContent: "center",
-    alignItems: "center",
-    paddingTop: 30,
-    width: "90%",
-    // marginBottom: ,
   },
   description: {
     paddingBottom: 15,
