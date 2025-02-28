@@ -34,27 +34,7 @@ def create_reminder():
 
     return jsonify({'message': 'Reminders created successfully'}), 201
 
-# @reminder_bp.route('/getReminders', methods=['GET'])
-# def get_reminders_by_email():
-#     user_email = request.args.get('user_email')  # Get the user_email from query parameters
-
-#     # Validate the incoming email
-#     if not user_email:
-#         return jsonify({'error': 'Missing user_email parameter'}), 400
-
-#     # Query the database for reminders associated with the user_email
-#     reminders = Reminder.query.filter_by(user_email=user_email).all()
-
-#     # Serialize the reminders into a list of dictionaries
-#     reminders_list = [
-#         {
-#             'id': reminder.id,
-#             'user_email': reminder.user_email,
-#             'start_date': reminder.start_date.isoformat(),  # Convert date to string
-#             'end_date': reminder.end_date.isoformat(),      # Convert date to string
-#             'hut_id': reminder.hut_id
-#         }
-#         for reminder in reminders
-#     ]
-
-#     return jsonify({'reminders': reminders_list}), 200
+@reminder_bp.route('/getRemindersByEmail', methods=['GET'])
+def get_reminders_by_email():
+    print('Getting All user reminders')
+    return jsonify({'message': 'Reminders fetched successfully'}), 200

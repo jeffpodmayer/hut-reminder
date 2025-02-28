@@ -12,6 +12,14 @@ import DateTimePicker from "react-native-ui-datepicker";
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
+import { HutSelectionModal } from "./components/HutSelectionModal";
+
+interface Reminder {
+  user_email: string;
+  start_date: string;
+  end_date: string;
+  huts: number[];
+}
 
 const SetReminderScreen = () => {
   const [email, setEmail] = useState<string>("");
@@ -19,7 +27,6 @@ const SetReminderScreen = () => {
   const [emailError, setEmailError] = useState<string>("");
   const [huts, setHuts] = useState<any[]>([]);
   const [selectedHuts, setSelectedHuts] = useState<string[]>([]);
-  const [error, setError] = useState<string>("");
   const [isModalVisible, setIsModalVisible] = useState(false);
   const navigation = useNavigation();
   const [dateRange, setDateRange] = useState<{
@@ -40,11 +47,7 @@ const SetReminderScreen = () => {
         const data = await response.json();
         setHuts(data);
       } catch (error) {
-        if (error instanceof Error) {
-          setError(error.message);
-        } else {
-          setError("An unknown error occurred.");
-        }
+        Alert.alert("Error", "Failed to fetch huts");
       } finally {
         setIsLoading(false);
       }
@@ -90,18 +93,20 @@ const SetReminderScreen = () => {
     endDate: string,
     hutIds: number[]
   ) => {
+    const reminder: Reminder = {
+      user_email: email,
+      start_date: startDate,
+      end_date: endDate,
+      huts: hutIds,
+    };
+
     try {
       const response = await fetch("http://127.0.0.1:5000/createReminder", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          user_email: email,
-          start_date: startDate,
-          end_date: endDate,
-          huts: hutIds,
-        }),
+        body: JSON.stringify(reminder),
       });
 
       if (!response.ok) {
@@ -217,39 +222,14 @@ const SetReminderScreen = () => {
           {isLoading ? "Saving..." : "Save Reminder"}
         </Text>
       </TouchableOpacity>
-      <Modal transparent={true} visible={isModalVisible} animationType="slide">
-        <View style={styles.modalContainer}>
-          <View style={styles.modalContent}>
-            <Text style={styles.inputLabel}>Select Huts</Text>
-            <Text style={styles.description}>Choose 1 or more</Text>
-            <ScrollView style={styles.hutList}>
-              {huts.map((hut) => (
-                <TouchableOpacity
-                  key={hut.id}
-                  style={[
-                    styles.hutOption,
-                    selectedHuts.includes(hut.id.toString()) &&
-                      styles.hutOptionSelected,
-                  ]}
-                  onPress={() => toggleHutSelection(hut.id.toString())}
-                >
-                  <Text style={styles.hutOptionText}>{hut.name}</Text>
-                </TouchableOpacity>
-              ))}
-            </ScrollView>
-            <TouchableOpacity
-              style={[
-                styles.button,
-                isLoading && styles.buttonDisabled,
-                { width: "50%", backgroundColor: "green" },
-              ]}
-              onPress={toggleModal}
-            >
-              <Text style={styles.buttonText}>Done</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </Modal>
+      <HutSelectionModal
+        isVisible={isModalVisible}
+        onClose={toggleModal}
+        huts={huts}
+        selectedHuts={selectedHuts}
+        onHutToggle={toggleHutSelection}
+        isLoading={isLoading}
+      />
     </View>
   );
 };
@@ -378,26 +358,6 @@ const styles = StyleSheet.create({
     color: "black",
   },
 
-  // MODAL STYLES
-  modalContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-  },
-  modalItem: {
-    padding: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
-  },
-
-  modalContent: {
-    backgroundColor: "white",
-    padding: 20,
-    borderRadius: 10,
-    width: "80%",
-    alignItems: "center",
-  },
   hutsButtonText: {
     fontSize: 20,
     fontWeight: "bold",
