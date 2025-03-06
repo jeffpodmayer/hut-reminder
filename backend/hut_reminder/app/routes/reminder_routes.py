@@ -57,3 +57,15 @@ def get_reminders_by_email(email):
     except Exception as e:
         print(f"Error occurred: {str(e)}")  # Debug print
         return jsonify({'error': str(e)}), 500
+
+@reminder_bp.route('/delete-reminder/<int:reminder_id>', methods=['DELETE'])
+def delete_reminder(reminder_id):
+    try:
+        reminder = Reminder.query.get_or_404(reminder_id)
+        db.session.delete(reminder)
+        db.session.commit()
+        return jsonify({'message': 'Reminder deleted successfully'}), 200
+    except Exception as e:
+        print(f"Error deleting reminder: {str(e)}")
+        return jsonify({'error': str(e)}), 500
+
