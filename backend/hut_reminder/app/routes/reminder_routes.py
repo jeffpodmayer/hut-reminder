@@ -69,3 +69,22 @@ def delete_reminder(reminder_id):
         print(f"Error deleting reminder: {str(e)}")
         return jsonify({'error': str(e)}), 500
 
+@reminder_bp.route('/update-reminder/<int:reminder_id>', methods=['PUT'])
+def update_reminder(reminder_id):
+    try:
+        reminder = Reminder.query.get_or_404(reminder_id)
+        data = request.get_json()
+
+        if 'start_date' in data:
+            reminder.start_date = datetime.strptime(data['start_date'], '%Y-%m-%d')
+        if 'end_date' in data:
+            reminder.end_date = datetime.strptime(data['end_date'], '%Y-%m-%d')
+        if 'hut_id' in data:
+            reminder.hut_id = data['hut_id']
+
+        db.session.commit()
+        return jsonify({'message': 'Reminder updated successfully'}), 200
+    except Exception as e:
+        print(f"Error updating reminder: {str(e)}")
+        return jsonify({'error': str(e)}), 500
+
