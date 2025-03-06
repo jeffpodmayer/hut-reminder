@@ -1,10 +1,11 @@
 from flask import Blueprint, request, jsonify
 from ..models.reminder import Reminder, db
+from ..models.hut import Hut
 from datetime import datetime
 
 reminder_bp = Blueprint('reminder', __name__)
 
-@reminder_bp.route('/createReminder', methods=['POST'])
+@reminder_bp.route('/create-reminder', methods=['POST'])
 def create_reminder():
     data = request.get_json()  # Get the JSON data from the request
     print("Received reminder data")
@@ -34,7 +35,25 @@ def create_reminder():
 
     return jsonify({'message': 'Reminders created successfully'}), 201
 
-@reminder_bp.route('/getRemindersByEmail', methods=['GET'])
-def get_reminders_by_email():
-    print('Getting All user reminders')
-    return jsonify({'message': 'Reminders fetched successfully'}), 200
+@reminder_bp.route('/get-reminders/<email>', methods=['GET'])
+def get_reminders_by_email(email):
+    try: 
+        # Join Reminder with Hut table
+        reminders = db.session.query(Reminder, Hut)\
+            .join(Hut, Reminder.hut_id == Hut.id)\
+            .filter(Reminder.user_email == email)\
+            .all()
+
+        reminders_list = []
+        for reminder, hut in reminders:
+            reminders_list.append({
+                'id': reminder.id, 
+                'user_email': reminder.user_email,
+                'start_date': reminder.start_date.strftime('%Y-%m-%d'),
+                'end_date': reminder.end_date.strftime('%Y-%m-%d'),      
+                'hut_name': hut.name
+            })
+        return jsonify(reminders_list), 200
+    except Exception as e:
+        print(f"Error occurred: {str(e)}")  # Debug print
+        return jsonify({'error': str(e)}), 500
