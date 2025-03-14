@@ -7,33 +7,26 @@ reminder_bp = Blueprint('reminder', __name__)
 
 @reminder_bp.route('/create-reminder', methods=['POST'])
 def create_reminder():
-    data = request.get_json()  # Get the JSON data from the request
-    print("Received reminder data")
-
+    data = request.get_json()
+    
     try: 
         start_date = datetime.strptime(data['start_date'], '%Y-%m-%d')
         end_date = datetime.strptime(data['end_date'], '%Y-%m-%d')
-    except ValueError:
-        return jsonify({'error': 'Invalid date format'}), 400
-
-    if not data or 'user_email' not in data or 'start_date' not in data or 'end_date' not in data or 'huts' not in data:
-        return jsonify({'error': 'Missing required fields'}), 400
-
-    reminders = []
-    for hut_id in data['huts']:
+        huts = Hut.query.filter(Hut.id.in_(data['huts'])).all()
+        
         new_reminder = Reminder(
             user_email=data['user_email'],
-            start_date=start_date,  
-            end_date=end_date,        
-            hut_id=hut_id
+            start_date=start_date,
+            end_date=end_date,
+            huts=huts
         )
-        reminders.append(new_reminder)
-
-    # Add the new reminders to the session and commit
-    db.session.add_all(reminders)
-    db.session.commit()
-
-    return jsonify({'message': 'Reminders created successfully'}), 201
+        
+        db.session.add(new_reminder)
+        db.session.commit()
+        
+        return jsonify({'message': 'Reminder created successfully'}), 201
+    except Exception as e:
+        return jsonify({'error': str(e)}), 400
 
 @reminder_bp.route('/get-reminders/<email>', methods=['GET'])
 def get_reminders_by_email(email):
