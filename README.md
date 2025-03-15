@@ -13,8 +13,8 @@ A mobile app that allows users to set reminders for a date range and receive upd
 
 ## Tech Stack
 
-- **Backend**: Python, Selenium, Flask (optional), MySQL (or your preferred database)
-- **Frontend**: React Native, Expo, Push Notifications
+- **Backend**: Python, Selenium, Flask, SQLite
+- **Frontend**: React Native, Expo
 
 
    
