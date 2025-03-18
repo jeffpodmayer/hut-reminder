@@ -42,12 +42,13 @@ class Scraper:
                 EC.presence_of_element_located((By.ID, "seasonal_year"))
             )
             select = Select(dropdown)
-            select.select_by_visible_text("Winter 2024-2025")
+            select.select_by_visible_text("Winter 2025-26")
 
             WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.TAG_NAME, "table"))  
             )
             self.logger.info("Selected 'Winter' from the dropdown.")
+            print("Selected 'Winter 2025-26' from the dropdown.")
         except (TimeoutException, WebDriverException) as e:
             self.logger.error(f"Error selecting winter option: {e}")
 
@@ -122,6 +123,7 @@ class Scraper:
             # Get dates
             dates = self._locate_dates()
             if not dates:
+
                 self.logger.error("No dates found in table")
                 return []
             

@@ -4,45 +4,21 @@ import {
   TextInput,
   ScrollView,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import { useState } from "react";
 import dayjs from "dayjs";
 import { AntDesign } from "@expo/vector-icons";
 import { viewRemindersStyles } from "../styles/screens/viewReminders";
+import { router } from "expo-router";
 
-// Define a type for our reminder object
 type Reminder = {
   id: string;
-  email: string;
-  startDate: string;
-  endDate: string;
-  hut: string;
+  user_email: string;
+  start_date: string;
+  end_date: string;
+  hut_name: string;
 };
-
-// Static reminder data for testing
-const MOCK_REMINDERS: Reminder[] = [
-  {
-    id: "1",
-    email: "test@example.com",
-    startDate: "2024-04-01",
-    endDate: "2024-04-05",
-    hut: "Brewster Hut",
-  },
-  {
-    id: "2",
-    email: "test@example.com",
-    startDate: "2024-05-10",
-    endDate: "2024-05-15",
-    hut: "Mueller Hut",
-  },
-  {
-    id: "3",
-    email: "other@example.com",
-    startDate: "2024-06-20",
-    endDate: "2024-06-25",
-    hut: "French Ridge Hut",
-  },
-];
 
 const ViewRemindersScreen = () => {
   const [email, setEmail] = useState("");
@@ -54,29 +30,69 @@ const ViewRemindersScreen = () => {
     return `${start} - ${end}`;
   };
 
-  const handleSearch = () => {
+  const handleSearch = async () => {
     if (!email.trim()) {
       setUserReminders([]);
       return;
     }
+    try {
+      const response = await fetch(
+        `http://127.0.0.1:5000/get-reminders/${encodeURIComponent(email)}`
+      );
 
-    // Filter MOCK_REMINDERS based on email
-    const filteredReminders = MOCK_REMINDERS.filter(
-      (reminder) => reminder.email.toLowerCase() === email.toLowerCase()
-    );
-    setUserReminders(filteredReminders);
+      if (!response.ok) {
+        throw new Error("Failed to fetch reminders");
+      }
+
+      const data = await response.json();
+      setUserReminders(data);
+    } catch (error) {
+      console.error("Error fetching reminders:", error);
+      Alert.alert("Error", "Failed to fetch reminders");
+      setUserReminders([]);
+    }
   };
 
-  const handleEdit = (reminderId: string) => {
-    // - Make PUT request to backend endpoint (e.g., /api/reminders/{reminderId})
-    // - Send updated reminder data
-    // - Refresh reminders list after successful update
-    console.log("Edit reminder:", reminderId);
+  const deleteReminder = async (reminderId: string) => {
+    try {
+      const response = await fetch(
+        `http://127.0.0.1:5000/delete-reminder/${reminderId}`,
+        { method: "DELETE" }
+      );
+
+      if (!response.ok) throw new Error("Failed to delete reminder");
+
+      setUserReminders((current) =>
+        current.filter((reminder) => reminder.id !== reminderId)
+      );
+    } catch (error) {
+      console.error("Error deleting reminder:", error);
+      Alert.alert("Error", "Failed to delete reminder");
+    }
   };
 
   const handleDelete = (reminderId: string) => {
-    // - Remove from UI immediately
-    // - Restore if API call fails
+    Alert.alert(
+      "Delete Reminder",
+      "Are you sure you want to delete this reminder?",
+      [
+        { text: "Cancel" },
+        {
+          text: "Delete",
+          style: "destructive",
+          onPress: () => {
+            void deleteReminder(reminderId);
+          },
+        },
+      ]
+    );
+  };
+
+  const handleEdit = (reminder: Reminder) => {
+    router.push({
+      pathname: "/edit-reminder",
+      params: { reminder: JSON.stringify(reminder) },
+    });
   };
 
   return (
@@ -105,21 +121,23 @@ const ViewRemindersScreen = () => {
         {userReminders.map((reminder) => (
           <View key={reminder.id} style={viewRemindersStyles.reminderCard}>
             <View>
-              <Text style={viewRemindersStyles.hutName}>{reminder.hut}</Text>
+              <Text style={viewRemindersStyles.hutName}>
+                {reminder.hut_name}
+              </Text>
               <Text style={viewRemindersStyles.dateRange}>
-                {formatDateRange(reminder.startDate, reminder.endDate)}
+                {formatDateRange(reminder.start_date, reminder.end_date)}
               </Text>
             </View>
             <View style={viewRemindersStyles.cardActions}>
               <TouchableOpacity
-                onPress={() => handleEdit(reminder.id)}
                 style={viewRemindersStyles.actionButton}
+                onPress={() => handleEdit(reminder)}
               >
                 <AntDesign name="edit" size={28} color="#0047FF" />
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => handleDelete(reminder.id)}
                 style={viewRemindersStyles.actionButton}
+                onPress={() => handleDelete(reminder.id)}
               >
                 <AntDesign name="delete" size={28} color="#FF0000" />
               </TouchableOpacity>
@@ -128,7 +146,7 @@ const ViewRemindersScreen = () => {
         ))}
         {userReminders.length === 0 && email !== "" && (
           <Text style={viewRemindersStyles.noReminders}>
-            No reminders found for this email
+            No reminders found for this email!
           </Text>
         )}
       </ScrollView>

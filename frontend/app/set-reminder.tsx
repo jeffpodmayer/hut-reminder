@@ -11,15 +11,26 @@ import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { HutSelectionModal } from "../components/HutSelectionModal";
+import { router } from "expo-router";
 
 interface Reminder {
+  id: string;
   user_email: string;
   start_date: string;
   end_date: string;
   huts: number[];
+  hut_id?: number;
 }
 
-const SetReminderScreen = () => {
+interface SetReminderScreenProps {
+  isEditing?: boolean;
+  reminderToEdit?: Reminder;
+}
+
+const SetReminderScreen = ({
+  isEditing,
+  reminderToEdit,
+}: SetReminderScreenProps) => {
   const [email, setEmail] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
   const [emailError, setEmailError] = useState<string>("");
@@ -53,6 +64,17 @@ const SetReminderScreen = () => {
 
     fetchHuts();
   }, []);
+
+  useEffect(() => {
+    if (isEditing && reminderToEdit) {
+      setEmail(reminderToEdit.user_email);
+      setSelectedHuts([reminderToEdit.hut_id?.toString() || ""]);
+      setDateRange({
+        startDate: dayjs(reminderToEdit.start_date),
+        endDate: dayjs(reminderToEdit.end_date),
+      });
+    }
+  }, [isEditing, reminderToEdit]);
 
   const handleDateChange = (params: { startDate: any; endDate: any }) => {
     const { startDate, endDate } = params;
@@ -96,10 +118,11 @@ const SetReminderScreen = () => {
       start_date: startDate,
       end_date: endDate,
       huts: hutIds,
+      id: "",
     };
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/createReminder", {
+      const response = await fetch("http://127.0.0.1:5000/create-reminder", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -116,22 +139,48 @@ const SetReminderScreen = () => {
     }
   };
 
+  const updateReminder = async (
+    reminderId: string,
+    updatedData: Partial<Reminder>
+  ) => {
+    const response = await fetch(
+      `http://127.0.0.1:5000/update-reminder/${reminderId}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedData),
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to update reminder");
+    }
+  };
+
   const onSave = async () => {
     if (!validateForm()) return;
     setIsLoading(true);
 
     try {
-      const hutIds = selectedHuts.map((id) => Number(id));
-
-      await createReminder(
-        email,
-        dateRange.startDate ? dateRange.startDate.format("YYYY-MM-DD") : "",
-        dateRange.endDate ? dateRange.endDate.format("YYYY-MM-DD") : "",
-        hutIds
-      );
-
-      // Fix this to be cleaner!
-      navigation.navigate("index" as never);
+      if (isEditing && reminderToEdit) {
+        await updateReminder(reminderToEdit.id, {
+          user_email: email,
+          start_date: dateRange.startDate?.format("YYYY-MM-DD"),
+          end_date: dateRange.endDate?.format("YYYY-MM-DD"),
+          hut_id: Number(selectedHuts[0]),
+        });
+      } else {
+        const hutIds = selectedHuts.map((id) => Number(id));
+        await createReminder(
+          email,
+          dateRange.startDate ? dateRange.startDate.format("YYYY-MM-DD") : "",
+          dateRange.endDate ? dateRange.endDate.format("YYYY-MM-DD") : "",
+          hutIds
+        );
+      }
+      router.push("/");
     } catch (error) {
       console.error("Error:", error);
       Alert.alert("Error", "Failed to save reminder.");

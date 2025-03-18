@@ -19,6 +19,7 @@ export default function RootLayout() {
         name="view-reminders"
         options={{ title: "View Your Reminders" }}
       />
+      <Stack.Screen name="edit-reminder" options={{ title: "Edit Reminder" }} />
     </Stack>
   );
 }
