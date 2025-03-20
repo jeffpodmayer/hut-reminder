@@ -55,6 +55,7 @@ class Scraper:
     # Step 6: Locate the table or hut data on the page
     def _locate_hut_names(self):
         try:
+            print("Locating hut names method called...")
             tables = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_all_elements_located((By.TAG_NAME, "table"))
             )
@@ -87,17 +88,23 @@ class Scraper:
 
     def _locate_dates(self):
         try:
+            print("Starting _locate_dates method...")
             tables = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_all_elements_located((By.TAG_NAME, "table"))
             )
+            print(f"Found {len(tables)} tables on the page")
             second_table = tables[1]
+            print("Successfully accessed the second table")
 
             first_row = second_table.find_element(By.TAG_NAME, "tr")
             cells = first_row.find_elements(By.TAG_NAME, "td")
+            print(f"Found {len(cells)} date cells in the first row")
 
             dates = []
-            for cell in cells:
+            for i, cell in enumerate(cells):
+                print(f"Processing cell {i+1}: Raw text = '{cell.text}'")
                 date_text = cell.text.strip().split()[-1] 
+                print(f"Extracted date text: '{date_text}'")
                 month = int(date_text.split('/')[0])
                 day = int(date_text.split('/')[1])
                 current_year = datetime.now().year
@@ -106,25 +113,31 @@ class Scraper:
                 else:
                     year = current_year 
                 
+                print(f"Parsed date components: year={year}, month={month}, day={day}")
                 full_date = datetime.strptime(f"{year}-{month:02d}-{day:02d}", "%Y-%m-%d").date()
                 dates.append(full_date)
+                print(f"Added date: {full_date}")
 
+            print(f"Returning {len(dates)} dates: {dates}")
             return dates
         except (TimeoutException, NoSuchElementException) as e:
+            print(f"ERROR in _locate_dates: {e}")
             self.logger.error(f"Error locating dates: {e}")
             return []
 
     def locate_availability(self):
         try:
             # Get our list of hut names first
+            print("Locating hut names...")
             hut_names = self._locate_hut_names()
+            print(f"Found {len(hut_names)} huts")
             self.logger.info(f"Found {len(hut_names)} huts")
             
             # Get dates
             dates = self._locate_dates()
             if not dates:
 
-                self.logger.error("No dates found in table")
+                self.logger.error("ERR:No dates found in table")
                 return []
             
             # Find the availability table
