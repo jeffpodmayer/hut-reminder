@@ -29,8 +29,14 @@ def run_scraper():
     except Exception as e:
         logger.error(f"Error running scraper: {e}", exc_info=True)
 
-def setup_scheduler(interval_seconds=30):  # Default to 30 seconds for testing
-    """Set up the scheduler to run the scraper at specified interval"""
+def setup_scheduler(interval_seconds=None, interval_hours=None):
+    """
+    Set up the scheduler to run the scraper at specified interval.
+    
+    Args:
+        interval_seconds: Run interval in seconds (for testing)
+        interval_hours: Run interval in hours (for production)
+    """
     # Use SQLAlchemy for persistent job storage
     jobstores = {
         'default': SQLAlchemyJobStore(url='sqlite:///jobs.sqlite')
@@ -38,18 +44,32 @@ def setup_scheduler(interval_seconds=30):  # Default to 30 seconds for testing
     
     scheduler = BackgroundScheduler(jobstores=jobstores)
     
-    # For testing: run every 30 seconds or 2 minutes (120 seconds)
-    scheduler.add_job(
-        run_scraper, 
-        'interval', 
-        seconds=interval_seconds,  # Use seconds parameter for short intervals
-        id='scraper_job', 
-        replace_existing=True, 
-        misfire_grace_time=10  # Shorter grace time for testing
-    )
+    # Determine the interval type and value
+    if interval_seconds is not None:
+        # For testing: use seconds
+        scheduler.add_job(
+            run_scraper, 
+            'interval', 
+            seconds=interval_seconds,
+            id='scraper_job', 
+            replace_existing=True, 
+            misfire_grace_time=10  # Short grace time for testing
+        )
+        logger.info(f"Scheduler started - running every {interval_seconds} seconds (TESTING MODE)")
+    else:
+        # For production: use hours (default to 8 if not specified)
+        hours = interval_hours if interval_hours is not None else 8
+        scheduler.add_job(
+            run_scraper, 
+            'interval', 
+            hours=hours,
+            id='scraper_job', 
+            replace_existing=True, 
+            misfire_grace_time=600  # 10 minutes grace time
+        )
+        logger.info(f"Scheduler started - running every {hours} hours")
     
     scheduler.start()
-    logger.info(f"Scheduler started - running every {interval_seconds} seconds")
     
     # Shut down the scheduler when exiting the app
     atexit.register(lambda: scheduler.shutdown())
