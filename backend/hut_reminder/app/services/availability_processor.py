@@ -50,7 +50,6 @@ def add_availability(availability_data):
 
     try:
         db.session.commit() 
-        print(f"Added/Updated availability data in the database.")
     except Exception as e:
         print(f"Error committing availability to the database: {e}")
         db.session.rollback()  

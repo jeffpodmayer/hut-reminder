@@ -9,6 +9,9 @@ from datetime import datetime
 import logging
 from selenium.common.exceptions import NoSuchElementException, TimeoutException, WebDriverException
 from pprint import pprint
+import time
+import re
+from datetime import timedelta
 
 
 class Scraper:
@@ -88,42 +91,99 @@ class Scraper:
 
     def _locate_dates(self):
         try:
-            print("Starting _locate_dates method...")
-            tables = WebDriverWait(self.driver, 10).until(
-                EC.presence_of_all_elements_located((By.TAG_NAME, "table"))
+            # Find the matrix scroll div which contains the table with dates
+            matrix_div = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.ID, "matrixScroll"))
             )
-            print(f"Found {len(tables)} tables on the page")
-            second_table = tables[1]
-            print("Successfully accessed the second table")
-
-            first_row = second_table.find_element(By.TAG_NAME, "tr")
-            cells = first_row.find_elements(By.TAG_NAME, "td")
-            print(f"Found {len(cells)} date cells in the first row")
-
+            
+            # Add a wait to allow dynamic content to load
+            time.sleep(5)  # Wait 5 seconds for content to load
+            
+            # Look for date patterns in the page source
+            page_source = self.driver.page_source
+            
+            date_patterns = re.findall(r'(\d{1,2}/\d{1,2})', page_source)
+            print(f"Found {len(date_patterns)} date patterns in page source")
+            
+            # If we found date patterns, try to convert them to dates
             dates = []
-            for i, cell in enumerate(cells):
-                print(f"Processing cell {i+1}: Raw text = '{cell.text}'")
-                date_text = cell.text.strip().split()[-1] 
-                print(f"Extracted date text: '{date_text}'")
-                month = int(date_text.split('/')[0])
-                day = int(date_text.split('/')[1])
-                current_year = datetime.now().year
-                if month == 12:
-                    year = current_year + 1  
-                else:
-                    year = current_year 
-                
-                print(f"Parsed date components: year={year}, month={month}, day={day}")
-                full_date = datetime.strptime(f"{year}-{month:02d}-{day:02d}", "%Y-%m-%d").date()
-                dates.append(full_date)
-                print(f"Added date: {full_date}")
-
-            print(f"Returning {len(dates)} dates: {dates}")
+            if date_patterns:
+                for pattern in date_patterns:  # Process all patterns
+                    try:
+                        month, day = map(int, pattern.split('/'))
+                        current_year = datetime.now().year
+                        if month == 12:
+                            year = current_year  
+                        else:
+                            year = current_year + 1
+                        
+                        full_date = datetime.strptime(f"{year}-{month:02d}-{day:02d}", "%Y-%m-%d").date()
+                        dates.append(full_date)
+                    except Exception:
+                        # Just skip any errors
+                        pass
+            
+            print(f"Successfully extracted {len(dates)} dates")
+            
+            # Validate the date range
+            self.validate_date_range(dates)
+            
             return dates
-        except (TimeoutException, NoSuchElementException) as e:
-            print(f"ERROR in _locate_dates: {e}")
+            
+        except Exception as e:
             self.logger.error(f"Error locating dates: {e}")
             return []
+
+    def validate_date_range(self, dates, start_month=12, start_day=12, end_month=3, end_day=15):
+        """
+        Validates that all dates between start_date and end_date are present in the dates list.
+        
+        Args:
+            dates: List of datetime.date objects to validate
+            start_month, start_day: Starting month and day
+            end_month, end_day: Ending month and day
+        
+        Returns:
+            Tuple of (is_complete, missing_dates)
+        """
+        if not dates:
+            print("No dates to validate")
+            return False, []
+        
+        # Sort the dates
+        sorted_dates = sorted(dates)
+        
+        # Determine the years based on the first date in the list
+        first_year = sorted_dates[0].year
+        second_year = first_year + 1 if sorted_dates[0].month == 12 else first_year
+        
+        # Create start and end dates
+        start_date = datetime(first_year, start_month, start_day).date()
+        end_date = datetime(second_year, end_month, end_day).date()
+        
+        print(f"Validating dates from {start_date} to {end_date}")
+        
+        # Generate all dates in the range
+        all_dates = []
+        current_date = start_date
+        while current_date <= end_date:
+            all_dates.append(current_date)
+            current_date += timedelta(days=1)
+        
+        # Find missing dates
+        missing_dates = [date for date in all_dates if date not in sorted_dates]
+        
+        # Report results
+        if missing_dates:
+            print(f"Missing {len(missing_dates)} dates:")
+            for date in missing_dates[:10]:  # Show first 10 missing dates
+                print(f"  - {date}")
+            if len(missing_dates) > 10:
+                print(f"  ... and {len(missing_dates) - 10} more")
+        else:
+            print("All dates in range are present!")
+        
+        return len(missing_dates) == 0, missing_dates
 
     def locate_availability(self):
         try:
