@@ -31,21 +31,23 @@ def create_reminder():
 @reminder_bp.route('/get-reminders/<email>', methods=['GET'])
 def get_reminders_by_email(email):
     try: 
-        # Join Reminder with Hut table
-        reminders = db.session.query(Reminder, Hut)\
-            .join(Hut, Reminder.hut_id == Hut.id)\
-            .filter(Reminder.user_email == email)\
-            .all()
-
+        # The error is in this query - Reminder doesn't have hut_id attribute
+        # Let's fix the query based on your actual model structure
+        
+        # If Reminder has a many-to-many relationship with Hut
+        reminders = Reminder.query.filter_by(user_email=email).all()
+        
         reminders_list = []
-        for reminder, hut in reminders:
-            reminders_list.append({
-                'id': reminder.id, 
-                'user_email': reminder.user_email,
-                'start_date': reminder.start_date.strftime('%Y-%m-%d'),
-                'end_date': reminder.end_date.strftime('%Y-%m-%d'),      
-                'hut_name': hut.name
-            })
+        for reminder in reminders:
+            # For each reminder, get all associated huts
+            for hut in reminder.huts:
+                reminders_list.append({
+                    'id': reminder.id, 
+                    'user_email': reminder.user_email,
+                    'start_date': reminder.start_date.strftime('%Y-%m-%d'),
+                    'end_date': reminder.end_date.strftime('%Y-%m-%d'),      
+                    'hut_name': hut.name
+                })
         return jsonify(reminders_list), 200
     except Exception as e:
         print(f"Error occurred: {str(e)}")  # Debug print
