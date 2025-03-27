@@ -12,13 +12,13 @@ import { AntDesign } from "@expo/vector-icons";
 import { viewRemindersStyles } from "../styles/screens/viewReminders";
 import { router } from "expo-router";
 
-type Reminder = {
+interface Reminder {
   id: string;
   user_email: string;
   start_date: string;
   end_date: string;
-  hut_name: string;
-};
+  hut_names: string[];
+}
 
 const ViewRemindersScreen = () => {
   const [email, setEmail] = useState("");
@@ -120,13 +120,19 @@ const ViewRemindersScreen = () => {
       <ScrollView style={viewRemindersStyles.remindersList}>
         {userReminders.map((reminder) => (
           <View key={reminder.id} style={viewRemindersStyles.reminderCard}>
-            <View>
-              <Text style={viewRemindersStyles.hutName}>
-                {reminder.hut_name}
-              </Text>
-              <Text style={viewRemindersStyles.dateRange}>
+            <View style={viewRemindersStyles.reminderContent}>
+              <Text
+                style={viewRemindersStyles.dateRange}
+                numberOfLines={1}
+                ellipsizeMode="tail"
+              >
                 {formatDateRange(reminder.start_date, reminder.end_date)}
               </Text>
+              <View style={viewRemindersStyles.hutList}>
+                <Text style={viewRemindersStyles.hutName}>
+                  {reminder.hut_names.join(", ")}
+                </Text>
+              </View>
             </View>
             <View style={viewRemindersStyles.cardActions}>
               <TouchableOpacity

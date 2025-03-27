@@ -614,3 +614,927 @@
 2025-03-26 15:56:57,513 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-26 15:57:15 PDT)" executed successfully
 2025-03-26 15:57:05,844 - apscheduler.scheduler - INFO - Scheduler has been shut down
 2025-03-26 15:57:06,040 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-03-27 10:47:42,508 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:47:42,735 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:48:03,432 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:48:03,588 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:48:04,095 - WDM - INFO - WebDriver version 134.0.6998.165 selected
+2025-03-27 10:48:04,097 - WDM - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/134.0.6998.165/mac-arm64/chromedriver-mac-arm64.zip
+2025-03-27 10:48:04,097 - WDM - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/134.0.6998.165/mac-arm64/chromedriver-mac-arm64.zip
+2025-03-27 10:48:11,369 - WDM - INFO - Driver downloading response is 200
+2025-03-27 10:48:12,836 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:48:12,979 - WDM - INFO - Driver has been saved in cache [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165]
+2025-03-27 10:48:16,243 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:48:16,244 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:48:16,407 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:48:16,541 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:48:16,644 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:48:19,762 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:48:19,817 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 10:48:19,870 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 10:48:25,652 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-03-27 10:48:25,652 - __main__ - INFO - Scheduler started - running every 30 seconds (TESTING MODE)
+2025-03-27 10:48:25,654 - apscheduler.scheduler - INFO - Added job "run_scraper" to job store "default"
+2025-03-27 10:48:25,655 - apscheduler.scheduler - INFO - Scheduler started
+2025-03-27 10:48:25,724 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-27 10:48:25,724 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-27 10:48:25,725 - werkzeug - INFO -  * Restarting with stat
+2025-03-27 10:48:26,002 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:48:26,148 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:48:26,233 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:48:26,326 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:48:28,502 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:48:28,503 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:48:28,622 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:48:28,729 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:48:28,809 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:48:30,853 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:48:30,889 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 10:48:30,939 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 10:48:36,747 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-03-27 10:48:36,747 - __main__ - INFO - Scheduler started - running every 30 seconds (TESTING MODE)
+2025-03-27 10:48:36,749 - apscheduler.scheduler - INFO - Added job "run_scraper" to job store "default"
+2025-03-27 10:48:36,749 - apscheduler.scheduler - INFO - Scheduler started
+2025-03-27 10:48:36,763 - werkzeug - WARNING -  * Debugger is active!
+2025-03-27 10:48:36,770 - werkzeug - INFO -  * Debugger PIN: 133-784-650
+2025-03-27 10:48:36,776 - werkzeug - INFO - 127.0.0.1 - - [27/Mar/2025 10:48:36] "GET /api/get-all-huts HTTP/1.1" 200 -
+2025-03-27 10:48:43,939 - werkzeug - INFO - 127.0.0.1 - - [27/Mar/2025 10:48:43] "GET /api/get-all-huts HTTP/1.1" 200 -
+2025-03-27 10:49:06,753 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:49:06 PDT)" (scheduled at 2025-03-27 10:49:06.747696-07:00)
+2025-03-27 10:49:06,754 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:49:06 PDT)" (scheduled at 2025-03-27 10:49:06.747696-07:00)
+2025-03-27 10:49:06,754 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 10:49:06,755 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:49:06,755 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 10:49:06,755 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:49:06,985 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:49:06,985 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:49:07,085 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:49:07,091 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:49:07,180 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:49:07,180 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:49:08,910 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:49:08,910 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:49:09,087 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:49:09,198 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:49:09,293 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:49:11,197 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:49:11,198 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:49:11,364 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:49:11,441 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:49:11,549 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:49:12,214 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:49:12,260 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 10:49:12,312 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 10:49:13,644 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:49:13,680 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 10:49:13,729 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 10:49:18,029 - __main__ - INFO - Scraper completed successfully
+2025-03-27 10:49:18,029 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:49:36 PDT)" executed successfully
+2025-03-27 10:49:19,412 - __main__ - INFO - Scraper completed successfully
+2025-03-27 10:49:19,412 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:49:36 PDT)" executed successfully
+2025-03-27 10:49:19,604 - werkzeug - INFO - 127.0.0.1 - - [27/Mar/2025 10:49:19] "[35m[1mPOST /create-reminder HTTP/1.1[0m" 201 -
+2025-03-27 10:49:36,754 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:50:06 PDT)" (scheduled at 2025-03-27 10:49:36.747696-07:00)
+2025-03-27 10:49:36,755 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 10:49:36,754 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:50:06 PDT)" (scheduled at 2025-03-27 10:49:36.747696-07:00)
+2025-03-27 10:49:36,755 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 10:49:36,755 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:49:36,755 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:49:36,932 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:49:36,932 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:49:37,053 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:49:37,059 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:49:37,144 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:49:37,152 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:49:40,893 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:49:40,893 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:49:40,947 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:49:40,947 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:49:41,056 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:49:41,072 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:49:41,136 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:49:41,155 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:49:41,218 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:49:41,244 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:49:44,047 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:49:44,081 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 10:49:44,132 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 10:49:44,222 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:49:44,256 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 10:49:44,306 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 10:49:49,833 - __main__ - INFO - Scraper completed successfully
+2025-03-27 10:49:49,834 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:50:06 PDT)" executed successfully
+2025-03-27 10:49:49,976 - __main__ - INFO - Scraper completed successfully
+2025-03-27 10:49:49,976 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:50:06 PDT)" executed successfully
+2025-03-27 10:50:06,752 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:50:36 PDT)" (scheduled at 2025-03-27 10:50:06.747696-07:00)
+2025-03-27 10:50:06,753 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 10:50:06,753 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:50:06,754 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:50:36 PDT)" (scheduled at 2025-03-27 10:50:06.747696-07:00)
+2025-03-27 10:50:06,754 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 10:50:06,754 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:50:06,930 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:50:06,930 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:50:07,020 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:50:07,119 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:50:07,133 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:50:07,222 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:50:08,396 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:50:08,396 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:50:08,563 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:50:08,642 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:50:08,718 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:50:09,768 - werkzeug - INFO - 127.0.0.1 - - [27/Mar/2025 10:50:09] "GET /get-reminders/jeff.podmayer@gmail.com HTTP/1.1" 200 -
+2025-03-27 10:50:10,515 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:50:10,515 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:50:10,667 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:50:10,763 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:50:11,043 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:50:13,222 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:50:13,258 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 10:50:13,306 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 10:50:14,043 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:50:14,079 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 10:50:14,127 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 10:50:18,974 - __main__ - INFO - Scraper completed successfully
+2025-03-27 10:50:18,975 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:50:36 PDT)" executed successfully
+2025-03-27 10:50:19,763 - __main__ - INFO - Scraper completed successfully
+2025-03-27 10:50:19,763 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:50:36 PDT)" executed successfully
+2025-03-27 10:50:36,760 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:51:06 PDT)" (scheduled at 2025-03-27 10:50:36.747696-07:00)
+2025-03-27 10:50:36,760 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 10:50:36,760 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:50:36,761 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:51:06 PDT)" (scheduled at 2025-03-27 10:50:36.747696-07:00)
+2025-03-27 10:50:36,761 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 10:50:36,761 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:50:36,930 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:50:36,930 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:50:37,017 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:50:37,017 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:50:37,113 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:50:37,125 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:50:39,990 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:50:39,991 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:50:40,153 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:50:40,235 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:50:40,314 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:50:40,324 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:50:40,324 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:50:40,439 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:50:40,520 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:50:40,601 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:50:42,324 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:50:42,357 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 10:50:42,399 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 10:50:43,328 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:50:43,369 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 10:50:43,416 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 10:50:48,073 - __main__ - INFO - Scraper completed successfully
+2025-03-27 10:50:48,074 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:51:06 PDT)" executed successfully
+2025-03-27 10:50:49,079 - __main__ - INFO - Scraper completed successfully
+2025-03-27 10:50:49,079 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:51:06 PDT)" executed successfully
+2025-03-27 10:51:06,762 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:51:36 PDT)" (scheduled at 2025-03-27 10:51:06.747696-07:00)
+2025-03-27 10:51:06,763 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 10:51:06,763 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:51:06,889 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:51:07,001 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:51:07,097 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:51:10,043 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:51:10,044 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:51:10,220 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:51:10,359 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:51:10,464 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:51:13,046 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:51:13,089 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 10:51:13,135 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 10:51:18,811 - __main__ - INFO - Scraper completed successfully
+2025-03-27 10:51:18,811 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:51:36 PDT)" executed successfully
+2025-03-27 10:51:36,753 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:52:06 PDT)" (scheduled at 2025-03-27 10:51:36.747696-07:00)
+2025-03-27 10:51:36,753 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 10:51:36,754 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:51:36,874 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:51:36,978 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:51:37,070 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:51:42,178 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:51:42,179 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:51:42,343 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:51:42,659 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:51:43,144 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:51:46,450 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:51:46,491 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 10:51:46,537 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 10:51:52,239 - __main__ - INFO - Scraper completed successfully
+2025-03-27 10:51:52,239 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:52:06 PDT)" executed successfully
+2025-03-27 10:52:06,753 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:52:36 PDT)" (scheduled at 2025-03-27 10:52:06.747696-07:00)
+2025-03-27 10:52:06,753 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 10:52:06,753 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:52:36 PDT)" (scheduled at 2025-03-27 10:52:06.747696-07:00)
+2025-03-27 10:52:06,753 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 10:52:06,753 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:52:06,753 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:52:06,927 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:52:06,927 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:52:07,185 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:52:07,293 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:52:07,312 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:52:07,406 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:52:09,515 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:52:09,515 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:52:09,673 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:52:09,753 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:52:09,834 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:52:10,325 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:52:10,326 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:52:10,506 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:52:10,601 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:52:10,689 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:52:11,134 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:52:12,605 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 10:52:12,657 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 10:52:14,633 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:52:14,678 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 10:52:14,721 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 10:52:18,371 - __main__ - INFO - Scraper completed successfully
+2025-03-27 10:52:18,371 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:52:36 PDT)" executed successfully
+2025-03-27 10:52:20,422 - __main__ - INFO - Scraper completed successfully
+2025-03-27 10:52:20,422 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:52:36 PDT)" executed successfully
+2025-03-27 10:52:36,754 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:53:06 PDT)" (scheduled at 2025-03-27 10:52:36.747696-07:00)
+2025-03-27 10:52:36,754 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:53:06 PDT)" (scheduled at 2025-03-27 10:52:36.747696-07:00)
+2025-03-27 10:52:36,754 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 10:52:36,754 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 10:52:36,754 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:52:36,754 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:52:36,925 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:52:36,925 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:52:37,015 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:52:37,015 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:52:37,083 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:52:37,092 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:52:38,446 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:52:38,447 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:52:38,451 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:52:38,452 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:52:38,677 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:52:38,678 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:52:38,776 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:52:38,781 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:52:38,858 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:52:38,858 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:52:45,130 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:52:45,173 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 10:52:45,216 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 10:52:45,636 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:52:45,685 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 10:52:45,756 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 10:52:50,929 - __main__ - INFO - Scraper completed successfully
+2025-03-27 10:52:50,929 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:53:06 PDT)" executed successfully
+2025-03-27 10:52:51,426 - __main__ - INFO - Scraper completed successfully
+2025-03-27 10:52:51,426 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:53:06 PDT)" executed successfully
+2025-03-27 10:52:54,509 - werkzeug - INFO - 127.0.0.1 - - [27/Mar/2025 10:52:54] "GET /api/get-all-huts HTTP/1.1" 200 -
+2025-03-27 10:53:06,750 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:53:36 PDT)" (scheduled at 2025-03-27 10:53:06.747696-07:00)
+2025-03-27 10:53:06,751 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 10:53:06,751 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:53:06,914 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:53:07,144 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:53:07,245 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:53:13,159 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:53:13,160 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:53:13,305 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:53:13,397 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:53:13,505 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:53:20,762 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:53:20,795 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 10:53:20,841 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 10:53:26,639 - __main__ - INFO - Scraper completed successfully
+2025-03-27 10:53:26,640 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:53:36 PDT)" executed successfully
+2025-03-27 10:53:36,754 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:54:06 PDT)" (scheduled at 2025-03-27 10:53:36.747696-07:00)
+2025-03-27 10:53:36,754 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:54:06 PDT)" (scheduled at 2025-03-27 10:53:36.747696-07:00)
+2025-03-27 10:53:36,755 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 10:53:36,755 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 10:53:36,755 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:53:36,755 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:53:36,894 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:53:36,894 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:53:36,963 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:53:36,971 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:53:37,045 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:53:37,065 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:53:50,051 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:53:50,055 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:53:50,240 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:53:51,343 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:53:52,145 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:53:52,256 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:53:52,256 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:53:52,379 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:53:53,248 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:53:54,146 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:54:06,750 - apscheduler.scheduler - WARNING - Execution of job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:54:06 PDT)" skipped: maximum number of running instances reached (1)
+2025-03-27 10:54:06,752 - apscheduler.scheduler - WARNING - Execution of job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:54:06 PDT)" skipped: maximum number of running instances reached (1)
+2025-03-27 10:54:16,052 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:54:16,092 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 10:54:16,140 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 10:54:17,350 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:54:17,385 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 10:54:17,436 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 10:54:21,956 - __main__ - INFO - Scraper completed successfully
+2025-03-27 10:54:21,957 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:54:06 PDT)" executed successfully
+2025-03-27 10:54:23,135 - __main__ - INFO - Scraper completed successfully
+2025-03-27 10:54:23,135 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:54:06 PDT)" executed successfully
+2025-03-27 10:54:36,750 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:55:06 PDT)" (scheduled at 2025-03-27 10:54:36.747696-07:00)
+2025-03-27 10:54:36,750 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 10:54:36,750 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:54:36,910 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:54:37,056 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:54:37,139 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:54:42,011 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:54:42,016 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:54:42,166 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:54:42,254 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:54:42,851 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:54:45,802 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:54:45,843 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 10:54:45,888 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 10:54:51,742 - __main__ - INFO - Scraper completed successfully
+2025-03-27 10:54:51,743 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:55:06 PDT)" executed successfully
+2025-03-27 10:55:06,749 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:55:36 PDT)" (scheduled at 2025-03-27 10:55:06.747696-07:00)
+2025-03-27 10:55:06,749 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 10:55:06,749 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:55:06,899 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:55:06,998 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:55:07,082 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:55:10,501 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:55:10,505 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:55:10,661 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:55:10,740 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:55:11,137 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:55:13,948 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:55:13,984 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 10:55:14,027 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 10:55:19,799 - __main__ - INFO - Scraper completed successfully
+2025-03-27 10:55:19,799 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:55:36 PDT)" executed successfully
+2025-03-27 10:55:36,750 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:56:06 PDT)" (scheduled at 2025-03-27 10:55:36.747696-07:00)
+2025-03-27 10:55:36,751 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 10:55:36,751 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:55:36,911 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:55:36,986 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:55:37,061 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:55:39,108 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:55:39,108 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:55:39,258 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:55:39,336 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:55:39,413 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:55:41,359 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:55:41,394 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 10:55:41,441 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 10:55:43,576 - werkzeug - INFO - 127.0.0.1 - - [27/Mar/2025 10:55:43] "GET /get-reminders/jeff.podmayer@gmail.com HTTP/1.1" 200 -
+2025-03-27 10:55:44,373 - werkzeug - INFO - 127.0.0.1 - - [27/Mar/2025 10:55:44] "GET /get-reminders/jeff.podmayer@gmail.com HTTP/1.1" 200 -
+2025-03-27 10:55:47,141 - __main__ - INFO - Scraper completed successfully
+2025-03-27 10:55:47,141 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:56:06 PDT)" executed successfully
+2025-03-27 10:55:55,406 - werkzeug - INFO - 127.0.0.1 - - [27/Mar/2025 10:55:55] "GET /get-reminders/Jeff.podmayer@gmail.com HTTP/1.1" 200 -
+2025-03-27 10:55:56,844 - werkzeug - INFO - 127.0.0.1 - - [27/Mar/2025 10:55:56] "GET /get-reminders/Jeff.podmayer@gmail.com HTTP/1.1" 200 -
+2025-03-27 10:56:00,690 - werkzeug - INFO - 127.0.0.1 - - [27/Mar/2025 10:56:00] "GET /get-reminders/jeff.podmayer@gmail.com HTTP/1.1" 200 -
+2025-03-27 10:56:06,753 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:56:36 PDT)" (scheduled at 2025-03-27 10:56:06.747696-07:00)
+2025-03-27 10:56:06,754 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 10:56:06,754 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:56:06,754 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:56:36 PDT)" (scheduled at 2025-03-27 10:56:06.747696-07:00)
+2025-03-27 10:56:06,754 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 10:56:06,754 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:56:06,890 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:56:06,890 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:56:06,969 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:56:06,969 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:56:07,043 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:56:07,048 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:56:09,768 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:56:09,769 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:56:09,921 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:56:10,023 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:56:10,108 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:56:11,617 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:56:11,617 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:56:11,780 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:56:11,874 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:56:12,088 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:56:12,392 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:56:12,427 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 10:56:12,486 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 10:56:14,798 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:56:14,841 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 10:56:14,888 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 10:56:18,222 - __main__ - INFO - Scraper completed successfully
+2025-03-27 10:56:18,222 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:56:36 PDT)" executed successfully
+2025-03-27 10:56:20,580 - __main__ - INFO - Scraper completed successfully
+2025-03-27 10:56:20,580 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:56:36 PDT)" executed successfully
+2025-03-27 10:56:36,750 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:57:06 PDT)" (scheduled at 2025-03-27 10:56:36.747696-07:00)
+2025-03-27 10:56:36,750 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 10:56:36,750 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:56:36,909 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:56:36,985 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:56:37,081 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:56:39,993 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:56:39,993 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:56:40,188 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:56:40,263 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:56:40,341 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:56:43,235 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:56:43,269 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 10:56:43,322 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 10:56:49,005 - __main__ - INFO - Scraper completed successfully
+2025-03-27 10:56:49,005 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:57:06 PDT)" executed successfully
+2025-03-27 10:57:06,754 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:57:36 PDT)" (scheduled at 2025-03-27 10:57:06.747696-07:00)
+2025-03-27 10:57:06,754 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 10:57:06,754 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:57:06,754 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:57:36 PDT)" (scheduled at 2025-03-27 10:57:06.747696-07:00)
+2025-03-27 10:57:06,754 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 10:57:06,755 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:57:06,899 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:57:06,899 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:57:06,978 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:57:06,981 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:57:07,068 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:57:07,068 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:57:10,146 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:57:10,151 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:57:10,305 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:57:10,422 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:57:10,550 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:57:11,523 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:57:11,524 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:57:11,687 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:57:11,763 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:57:11,836 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:57:13,630 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:57:13,670 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 10:57:13,718 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 10:57:14,910 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:57:14,953 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 10:57:15,001 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 10:57:19,432 - __main__ - INFO - Scraper completed successfully
+2025-03-27 10:57:19,432 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:57:36 PDT)" executed successfully
+2025-03-27 10:57:20,723 - __main__ - INFO - Scraper completed successfully
+2025-03-27 10:57:20,723 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:57:36 PDT)" executed successfully
+2025-03-27 10:57:36,753 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:58:06 PDT)" (scheduled at 2025-03-27 10:57:36.747696-07:00)
+2025-03-27 10:57:36,753 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:58:06 PDT)" (scheduled at 2025-03-27 10:57:36.747696-07:00)
+2025-03-27 10:57:36,754 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 10:57:36,754 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 10:57:36,754 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:57:36,754 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:57:36,930 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:57:36,930 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:57:37,548 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:57:37,946 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:57:37,950 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:57:38,042 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:57:41,885 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:57:41,886 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:57:42,039 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:57:42,249 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:57:42,323 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:57:42,439 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:57:42,443 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:57:42,560 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:57:42,636 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:57:42,721 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:57:46,580 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:57:46,613 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 10:57:46,662 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 10:57:47,162 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:57:47,195 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 10:57:47,240 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 10:57:52,408 - __main__ - INFO - Scraper completed successfully
+2025-03-27 10:57:52,408 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:58:06 PDT)" executed successfully
+2025-03-27 10:57:52,887 - __main__ - INFO - Scraper completed successfully
+2025-03-27 10:57:52,888 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:58:06 PDT)" executed successfully
+2025-03-27 10:58:06,754 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:58:36 PDT)" (scheduled at 2025-03-27 10:58:06.747696-07:00)
+2025-03-27 10:58:06,754 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 10:58:06,754 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:58:06,754 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:58:36 PDT)" (scheduled at 2025-03-27 10:58:06.747696-07:00)
+2025-03-27 10:58:06,755 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 10:58:06,755 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:58:06,927 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:58:06,927 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:58:07,647 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:58:07,743 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:58:08,443 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:58:08,645 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:58:09,956 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:58:09,956 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:58:10,116 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:58:10,247 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:58:10,478 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:58:18,985 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:58:19,021 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 10:58:19,044 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:58:19,045 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:58:19,071 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 10:58:19,184 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:58:19,654 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:58:19,957 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:58:21,557 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:58:24,845 - __main__ - INFO - Scraper completed successfully
+2025-03-27 10:58:24,845 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:58:36 PDT)" executed successfully
+2025-03-27 10:58:33,987 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 10:58:34,035 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 10:58:36,753 - apscheduler.scheduler - WARNING - Execution of job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:58:36 PDT)" skipped: maximum number of running instances reached (1)
+2025-03-27 10:58:36,754 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:59:06 PDT)" (scheduled at 2025-03-27 10:58:36.747696-07:00)
+2025-03-27 10:58:36,754 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 10:58:36,754 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:58:36,914 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:58:37,739 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:58:38,180 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:58:39,817 - __main__ - INFO - Scraper completed successfully
+2025-03-27 10:58:39,817 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:58:36 PDT)" executed successfully
+2025-03-27 10:58:51,152 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:58:51,152 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:58:51,303 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:58:51,844 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:58:52,001 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:58:54,551 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:58:54,594 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 10:58:54,639 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 10:59:00,383 - __main__ - INFO - Scraper completed successfully
+2025-03-27 10:59:00,383 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:59:06 PDT)" executed successfully
+2025-03-27 10:59:06,754 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:59:36 PDT)" (scheduled at 2025-03-27 10:59:06.747696-07:00)
+2025-03-27 10:59:06,754 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 10:59:06,754 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:59:36 PDT)" (scheduled at 2025-03-27 10:59:06.747696-07:00)
+2025-03-27 10:59:06,755 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 10:59:06,755 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:59:06,755 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:59:06,927 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:59:06,927 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:59:07,002 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:59:07,007 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:59:07,109 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:59:07,110 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:59:09,650 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:59:09,652 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:59:09,815 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:59:09,899 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:59:09,974 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:59:10,251 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:59:10,253 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:59:10,447 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:59:11,944 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:59:12,559 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:59:14,053 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:59:17,264 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:59:17,332 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 10:59:17,386 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 10:59:23,061 - __main__ - INFO - Scraper completed successfully
+2025-03-27 10:59:23,061 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:59:36 PDT)" executed successfully
+2025-03-27 10:59:26,899 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 10:59:26,944 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 10:59:32,595 - __main__ - INFO - Scraper completed successfully
+2025-03-27 10:59:32,596 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 10:59:36 PDT)" executed successfully
+2025-03-27 10:59:34,757 - werkzeug - INFO - 127.0.0.1 - - [27/Mar/2025 10:59:34] "GET /get-reminders/jeff.podmayer@gmail.com HTTP/1.1" 200 -
+2025-03-27 10:59:35,808 - werkzeug - INFO - 127.0.0.1 - - [27/Mar/2025 10:59:35] "GET /get-reminders/jeff.podmayer@gmail.com HTTP/1.1" 200 -
+2025-03-27 10:59:36,754 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:00:06 PDT)" (scheduled at 2025-03-27 10:59:36.747696-07:00)
+2025-03-27 10:59:36,755 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 10:59:36,755 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:00:06 PDT)" (scheduled at 2025-03-27 10:59:36.747696-07:00)
+2025-03-27 10:59:36,755 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 10:59:36,755 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:59:36,755 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:59:36,927 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:59:36,927 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:59:37,449 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:59:37,449 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:59:38,049 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:59:38,049 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:59:39,653 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:59:39,653 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:59:39,818 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:59:40,945 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:59:42,047 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:59:48,076 - werkzeug - INFO - 127.0.0.1 - - [27/Mar/2025 10:59:48] "GET /get-reminders/jeff.podmayer@gmail.com HTTP/1.1" 200 -
+2025-03-27 10:59:54,176 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:59:54,176 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 10:59:54,326 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:59:55,151 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 10:59:55,547 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 10:59:57,354 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 10:59:57,388 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 10:59:57,438 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 11:00:03,167 - __main__ - INFO - Scraper completed successfully
+2025-03-27 11:00:03,168 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:00:06 PDT)" executed successfully
+2025-03-27 11:00:06,749 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:00:36 PDT)" (scheduled at 2025-03-27 11:00:06.747696-07:00)
+2025-03-27 11:00:06,750 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 11:00:06,750 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:00:06,913 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:00:07,852 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:00:07,865 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:00:07,905 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 11:00:07,957 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 11:00:08,758 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:00:13,711 - __main__ - INFO - Scraper completed successfully
+2025-03-27 11:00:13,711 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:00:06 PDT)" executed successfully
+2025-03-27 11:00:35,359 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:00:35,359 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:00:35,523 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:00:36,656 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:00:36,750 - apscheduler.scheduler - WARNING - Execution of job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:00:36 PDT)" skipped: maximum number of running instances reached (1)
+2025-03-27 11:00:37,456 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:00:39,444 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:00:59,059 - werkzeug - INFO - 127.0.0.1 - - [27/Mar/2025 11:00:59] "GET /get-reminders/jeff.podmayer@gmail.com HTTP/1.1" 200 -
+2025-03-27 11:01:06,754 - apscheduler.scheduler - WARNING - Execution of job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:01:06 PDT)" skipped: maximum number of running instances reached (1)
+2025-03-27 11:01:06,754 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:01:36 PDT)" (scheduled at 2025-03-27 11:01:06.747696-07:00)
+2025-03-27 11:01:06,754 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 11:01:06,755 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:01:06,931 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:01:07,858 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:01:08,951 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:01:13,486 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 11:01:13,533 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 11:01:19,392 - __main__ - INFO - Scraper completed successfully
+2025-03-27 11:01:19,392 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:00:36 PDT)" executed successfully
+2025-03-27 11:01:25,556 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:01:25,558 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:01:25,712 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:01:26,047 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:01:26,447 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:01:36,550 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:01:36,594 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 11:01:36,641 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 11:01:36,753 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:02:06 PDT)" (scheduled at 2025-03-27 11:01:36.747696-07:00)
+2025-03-27 11:01:36,753 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 11:01:36,753 - apscheduler.scheduler - WARNING - Execution of job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:01:36 PDT)" skipped: maximum number of running instances reached (1)
+2025-03-27 11:01:36,753 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:01:36,902 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:01:37,626 - werkzeug - INFO - 127.0.0.1 - - [27/Mar/2025 11:01:37] "GET /get-reminders/jeff.podmayer@gmail.com HTTP/1.1" 200 -
+2025-03-27 11:01:39,056 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:01:40,247 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:01:42,359 - __main__ - INFO - Scraper completed successfully
+2025-03-27 11:01:42,360 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:01:36 PDT)" executed successfully
+2025-03-27 11:01:59,059 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:01:59,061 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:01:59,216 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:02:00,248 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:02:01,147 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:02:02,780 - werkzeug - INFO - 127.0.0.1 - - [27/Mar/2025 11:02:02] "GET /api/get-all-huts HTTP/1.1" 200 -
+2025-03-27 11:02:06,751 - apscheduler.scheduler - WARNING - Execution of job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:02:06 PDT)" skipped: maximum number of running instances reached (1)
+2025-03-27 11:02:10,160 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:02:10,202 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 11:02:10,248 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 11:02:16,003 - __main__ - INFO - Scraper completed successfully
+2025-03-27 11:02:16,004 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:02:06 PDT)" executed successfully
+2025-03-27 11:02:36,750 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:03:06 PDT)" (scheduled at 2025-03-27 11:02:36.747696-07:00)
+2025-03-27 11:02:36,751 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 11:02:36,751 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:02:36,912 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:02:36,993 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:02:37,068 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:02:39,155 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:02:39,156 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:02:39,310 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:02:39,382 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:02:39,465 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:02:43,299 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:02:43,343 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 11:02:43,387 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 11:02:49,086 - __main__ - INFO - Scraper completed successfully
+2025-03-27 11:02:49,086 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:03:06 PDT)" executed successfully
+2025-03-27 11:03:06,752 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:03:36 PDT)" (scheduled at 2025-03-27 11:03:06.747696-07:00)
+2025-03-27 11:03:06,753 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 11:03:06,753 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:03:06,875 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:03:07,271 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:03:07,348 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:03:10,202 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:03:10,203 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:03:10,358 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:03:10,475 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:03:10,568 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:03:12,633 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:03:12,672 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 11:03:12,730 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 11:03:18,438 - __main__ - INFO - Scraper completed successfully
+2025-03-27 11:03:18,438 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:03:36 PDT)" executed successfully
+2025-03-27 11:03:36,754 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:04:06 PDT)" (scheduled at 2025-03-27 11:03:36.747696-07:00)
+2025-03-27 11:03:36,754 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 11:03:36,754 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:04:06 PDT)" (scheduled at 2025-03-27 11:03:36.747696-07:00)
+2025-03-27 11:03:36,755 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 11:03:36,755 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:03:36,755 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:03:36,929 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:03:36,929 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:03:37,013 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:03:37,090 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:03:37,367 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:03:37,453 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:03:40,481 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:03:40,482 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:03:40,614 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:03:40,614 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:03:40,643 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:03:40,725 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:03:40,733 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:03:40,801 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:03:40,808 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:03:40,900 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:03:43,168 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:03:43,193 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:03:43,203 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 11:03:43,234 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 11:03:43,258 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 11:03:43,283 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 11:03:48,984 - __main__ - INFO - Scraper completed successfully
+2025-03-27 11:03:48,984 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:04:06 PDT)" executed successfully
+2025-03-27 11:03:49,012 - __main__ - INFO - Scraper completed successfully
+2025-03-27 11:03:49,012 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:04:06 PDT)" executed successfully
+2025-03-27 11:04:06,753 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:04:36 PDT)" (scheduled at 2025-03-27 11:04:06.747696-07:00)
+2025-03-27 11:04:06,754 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 11:04:06,754 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:04:06,754 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:04:36 PDT)" (scheduled at 2025-03-27 11:04:06.747696-07:00)
+2025-03-27 11:04:06,754 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 11:04:06,754 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:04:06,927 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:04:06,927 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:04:07,003 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:04:07,012 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:04:07,092 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:04:07,092 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:04:09,929 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:04:09,930 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:04:10,098 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:04:10,134 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:04:10,135 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:04:10,173 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:04:10,251 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:04:10,272 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:04:10,325 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:04:10,405 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:04:12,531 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:04:12,565 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 11:04:12,605 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:04:12,612 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 11:04:12,640 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 11:04:12,686 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 11:04:18,387 - __main__ - INFO - Scraper completed successfully
+2025-03-27 11:04:18,387 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:04:36 PDT)" executed successfully
+2025-03-27 11:04:18,448 - __main__ - INFO - Scraper completed successfully
+2025-03-27 11:04:18,448 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:04:36 PDT)" executed successfully
+2025-03-27 11:04:36,754 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:05:06 PDT)" (scheduled at 2025-03-27 11:04:36.747696-07:00)
+2025-03-27 11:04:36,754 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:05:06 PDT)" (scheduled at 2025-03-27 11:04:36.747696-07:00)
+2025-03-27 11:04:36,754 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 11:04:36,755 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 11:04:36,755 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:04:36,755 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:04:36,895 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:04:36,895 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:04:36,976 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:04:36,976 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:04:37,055 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:04:37,056 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:04:48,153 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:04:48,154 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:04:48,312 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:04:48,864 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:04:48,864 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:04:48,992 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:04:49,243 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:04:49,649 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:04:49,852 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:04:50,150 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:04:56,876 - werkzeug - INFO - 127.0.0.1 - - [27/Mar/2025 11:04:56] "GET /get-reminders/jeff.podmayer@gmail.com HTTP/1.1" 200 -
+2025-03-27 11:05:03,963 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:05:03,999 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 11:05:04,045 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 11:05:06,751 - apscheduler.scheduler - WARNING - Execution of job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:05:06 PDT)" skipped: maximum number of running instances reached (1)
+2025-03-27 11:05:06,752 - apscheduler.scheduler - WARNING - Execution of job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:05:06 PDT)" skipped: maximum number of running instances reached (1)
+2025-03-27 11:05:09,780 - __main__ - INFO - Scraper completed successfully
+2025-03-27 11:05:09,780 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:05:06 PDT)" executed successfully
+2025-03-27 11:05:10,869 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:05:10,904 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 11:05:10,950 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 11:05:16,694 - __main__ - INFO - Scraper completed successfully
+2025-03-27 11:05:16,694 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:05:06 PDT)" executed successfully
+2025-03-27 11:05:20,094 - werkzeug - INFO - 127.0.0.1 - - [27/Mar/2025 11:05:20] "GET /get-reminders/jeff.podmayer@gmail.com HTTP/1.1" 200 -
+2025-03-27 11:05:36,753 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:06:06 PDT)" (scheduled at 2025-03-27 11:05:36.747696-07:00)
+2025-03-27 11:05:36,753 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 11:05:36,753 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:05:36,754 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:06:06 PDT)" (scheduled at 2025-03-27 11:05:36.747696-07:00)
+2025-03-27 11:05:36,754 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 11:05:36,755 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:05:36,893 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:05:36,893 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:05:37,353 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:05:37,353 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:05:37,655 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:05:37,745 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:05:39,575 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:05:39,575 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:05:39,729 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:05:40,952 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:05:41,952 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:05:55,294 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:05:55,297 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:05:55,460 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:05:55,590 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:05:55,591 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:05:55,626 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 11:05:55,671 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 11:05:55,682 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:06:01,324 - __main__ - INFO - Scraper completed successfully
+2025-03-27 11:06:01,324 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:06:06 PDT)" executed successfully
+2025-03-27 11:06:06,748 - apscheduler.scheduler - WARNING - Execution of job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:06:06 PDT)" skipped: maximum number of running instances reached (1)
+2025-03-27 11:06:06,749 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:06:36 PDT)" (scheduled at 2025-03-27 11:06:06.747696-07:00)
+2025-03-27 11:06:06,749 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 11:06:06,749 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:06:06,908 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:06:09,045 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:06:11,344 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:06:14,281 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:06:14,314 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 11:06:14,362 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 11:06:20,096 - __main__ - INFO - Scraper completed successfully
+2025-03-27 11:06:20,096 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:06:06 PDT)" executed successfully
+2025-03-27 11:06:26,254 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:06:26,254 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:06:26,412 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:06:27,136 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:06:27,360 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:06:36,749 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:07:06 PDT)" (scheduled at 2025-03-27 11:06:36.747696-07:00)
+2025-03-27 11:06:36,749 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 11:06:36,750 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:06:36,909 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:06:38,037 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:06:38,935 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:06:58,517 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:06:58,518 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:06:58,669 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:06:59,034 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:06:59,115 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:07:01,366 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:07:01,402 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 11:07:01,449 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 11:07:06,748 - apscheduler.scheduler - WARNING - Execution of job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:07:06 PDT)" skipped: maximum number of running instances reached (1)
+2025-03-27 11:07:07,092 - __main__ - INFO - Scraper completed successfully
+2025-03-27 11:07:07,092 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:07:06 PDT)" executed successfully
+2025-03-27 11:07:26,777 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:07:26,820 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 11:07:26,865 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 11:07:32,570 - __main__ - INFO - Scraper completed successfully
+2025-03-27 11:07:32,571 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:06:36 PDT)" executed successfully
+2025-03-27 11:07:36,754 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:08:06 PDT)" (scheduled at 2025-03-27 11:07:36.747696-07:00)
+2025-03-27 11:07:36,754 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:08:06 PDT)" (scheduled at 2025-03-27 11:07:36.747696-07:00)
+2025-03-27 11:07:36,754 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 11:07:36,754 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 11:07:36,755 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:07:36,755 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:07:36,929 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:07:36,929 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:07:37,028 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:07:37,040 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:07:37,108 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:07:37,118 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:07:42,843 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:07:42,848 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:07:43,025 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:07:43,445 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:07:43,446 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:07:43,449 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:07:43,566 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:07:43,842 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:07:44,046 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:07:44,640 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:07:45,142 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:07:45,300 - werkzeug - INFO - 127.0.0.1 - - [27/Mar/2025 11:07:45] "GET /get-reminders/jeff.podmayer@gmail.com HTTP/1.1" 200 -
+2025-03-27 11:07:54,590 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 11:07:54,636 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 11:07:56,742 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:07:56,781 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 11:07:56,827 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 11:08:00,577 - __main__ - INFO - Scraper completed successfully
+2025-03-27 11:08:00,577 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:08:06 PDT)" executed successfully
+2025-03-27 11:08:02,633 - __main__ - INFO - Scraper completed successfully
+2025-03-27 11:08:02,635 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:08:06 PDT)" executed successfully
+2025-03-27 11:08:06,753 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:08:36 PDT)" (scheduled at 2025-03-27 11:08:06.747696-07:00)
+2025-03-27 11:08:06,753 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:08:36 PDT)" (scheduled at 2025-03-27 11:08:06.747696-07:00)
+2025-03-27 11:08:06,753 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 11:08:06,753 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 11:08:06,754 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:08:06,754 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:08:06,925 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:08:06,925 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:08:07,539 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:08:07,539 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:08:07,941 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:08:07,942 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:08:18,252 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:08:18,252 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:08:18,400 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:08:19,342 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:08:19,970 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:08:19,972 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:08:20,084 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:08:20,142 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:08:21,043 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:08:22,234 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:08:32,774 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:08:32,807 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 11:08:32,854 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 11:08:35,152 - app.services.scraper - INFO - Browser initialized and navigated to the target site.
+2025-03-27 11:08:35,189 - app.services.scraper - INFO - Selected 'Winter' from the dropdown.
+2025-03-27 11:08:35,237 - app.services.scraper - INFO - Found 5 huts
+2025-03-27 11:08:36,754 - apscheduler.scheduler - WARNING - Execution of job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:08:36 PDT)" skipped: maximum number of running instances reached (1)
+2025-03-27 11:08:36,755 - apscheduler.scheduler - WARNING - Execution of job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:08:36 PDT)" skipped: maximum number of running instances reached (1)
+2025-03-27 11:08:38,533 - __main__ - INFO - Scraper completed successfully
+2025-03-27 11:08:38,534 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:08:36 PDT)" executed successfully
+2025-03-27 11:08:40,921 - __main__ - INFO - Scraper completed successfully
+2025-03-27 11:08:40,921 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:08:36 PDT)" executed successfully

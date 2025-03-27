@@ -54,12 +54,15 @@ export const viewRemindersStyles = StyleSheet.create({
     alignItems: "center",
   },
   hutName: {
-    fontSize: 18,
-    fontWeight: "bold",
+    fontSize: 14,
+    color: "#666",
     marginBottom: 5,
   },
   dateRange: {
-    color: "#666",
+    fontSize: 18,
+    fontWeight: "bold",
+    flexShrink: 1,
+    flexWrap: "nowrap",
   },
   noReminders: {
     textAlign: "center",
@@ -73,5 +76,11 @@ export const viewRemindersStyles = StyleSheet.create({
   actionButton: {
     padding: 5,
     marginLeft: 15,
+  },
+  hutList: {
+    marginTop: 5,
+  },
+  reminderContent: {
+    flex: 1,
   },
 });
