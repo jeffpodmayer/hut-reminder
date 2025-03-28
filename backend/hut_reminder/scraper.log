@@ -1538,3 +1538,15 @@
 2025-03-27 11:08:38,534 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:08:36 PDT)" executed successfully
 2025-03-27 11:08:40,921 - __main__ - INFO - Scraper completed successfully
 2025-03-27 11:08:40,921 - apscheduler.executors.default - INFO - Job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:08:36 PDT)" executed successfully
+2025-03-27 11:09:06,753 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:09:36 PDT)" (scheduled at 2025-03-27 11:09:06.747696-07:00)
+2025-03-27 11:09:06,753 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 11:09:06,754 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:09:06,754 - apscheduler.executors.default - INFO - Running job "run_scraper (trigger: interval[0:00:30], next run at: 2025-03-27 11:09:36 PDT)" (scheduled at 2025-03-27 11:09:06.747696-07:00)
+2025-03-27 11:09:06,754 - __main__ - INFO - Starting scheduled scraper run
+2025-03-27 11:09:06,755 - WDM - INFO - ====== WebDriver manager ======
+2025-03-27 11:09:06,901 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:09:06,901 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:09:07,338 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:09:07,732 - WDM - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-27 11:09:07,748 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache
+2025-03-27 11:09:07,893 - WDM - INFO - Driver [/Users/jeffreypodmayer/.wdm/drivers/chromedriver/mac64/134.0.6998.165/chromedriver-mac-arm64/chromedriver] found in cache

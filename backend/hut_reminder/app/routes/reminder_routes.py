@@ -33,14 +33,11 @@ def get_reminders_by_email(email):
     try: 
         reminders = Reminder.query.filter_by(user_email=email).all()
         
-        # Create a dictionary to group reminders by date range
         grouped_reminders = {}
         
         for reminder in reminders:
-            # Create a key based on the date range
             key = f"{reminder.start_date.strftime('%Y-%m-%d')}_{reminder.end_date.strftime('%Y-%m-%d')}"
             
-            # If this is the first time we're seeing this date range
             if key not in grouped_reminders:
                 grouped_reminders[key] = {
                     'id': reminder.id,
@@ -50,17 +47,14 @@ def get_reminders_by_email(email):
                     'hut_names': []
                 }
             
-            # Add all hut names for this reminder
             for hut in reminder.huts:
                 if hut.name not in grouped_reminders[key]['hut_names']:
                     grouped_reminders[key]['hut_names'].append(hut.name)
         
-        # Convert the dictionary to a list
         reminders_list = list(grouped_reminders.values())
         
         return jsonify(reminders_list), 200
     except Exception as e:
-        print(f"Error occurred: {str(e)}")  # Debug print
         return jsonify({'error': str(e)}), 500
 
 @reminder_bp.route('/delete-reminder/<int:reminder_id>', methods=['DELETE'])
