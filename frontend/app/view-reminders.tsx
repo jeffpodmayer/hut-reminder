@@ -141,12 +141,12 @@ const ViewRemindersScreen = () => {
               >
                 <AntDesign name="edit" size={28} color="#0047FF" />
               </TouchableOpacity>
-              <TouchableOpacity
+              {/* <TouchableOpacity
                 style={viewRemindersStyles.actionButton}
                 onPress={() => handleDelete(reminder.id)}
               >
                 <AntDesign name="delete" size={28} color="#FF0000" />
-              </TouchableOpacity>
+              </TouchableOpacity> */}
             </View>
           </View>
         ))}
