@@ -9,7 +9,6 @@ import {
 import DateTimePicker from "react-native-ui-datepicker";
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
-import { useNavigation } from "@react-navigation/native";
 import { HutSelectionModal } from "../components/HutSelectionModal";
 import { router } from "expo-router";
 
@@ -20,6 +19,7 @@ interface Reminder {
   end_date: string;
   huts: number[];
   hut_id?: number;
+  hut_ids?: number[];
 }
 
 interface SetReminderScreenProps {
@@ -37,7 +37,6 @@ const SetReminderScreen = ({
   const [huts, setHuts] = useState<any[]>([]);
   const [selectedHuts, setSelectedHuts] = useState<string[]>([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const navigation = useNavigation();
   const [dateRange, setDateRange] = useState<{
     startDate: dayjs.Dayjs | null;
     endDate: dayjs.Dayjs | null;
@@ -68,7 +67,13 @@ const SetReminderScreen = ({
   useEffect(() => {
     if (isEditing && reminderToEdit) {
       setEmail(reminderToEdit.user_email);
-      setSelectedHuts([reminderToEdit.hut_id?.toString() || ""]);
+
+      if (reminderToEdit.hut_ids && reminderToEdit.hut_ids.length > 0) {
+        setSelectedHuts(reminderToEdit.hut_ids.map((id) => id.toString()));
+      } else if (reminderToEdit.hut_id) {
+        setSelectedHuts([reminderToEdit.hut_id.toString()]);
+      }
+
       setDateRange({
         startDate: dayjs(reminderToEdit.start_date),
         endDate: dayjs(reminderToEdit.end_date),

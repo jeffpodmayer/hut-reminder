@@ -44,12 +44,14 @@ def get_reminders_by_email(email):
                     'user_email': reminder.user_email,
                     'start_date': reminder.start_date.strftime('%Y-%m-%d'),
                     'end_date': reminder.end_date.strftime('%Y-%m-%d'),
-                    'hut_names': []
+                    'hut_names': [],
+                    'hut_ids': []
                 }
             
             for hut in reminder.huts:
                 if hut.name not in grouped_reminders[key]['hut_names']:
                     grouped_reminders[key]['hut_names'].append(hut.name)
+                    grouped_reminders[key]['hut_ids'].append(hut.id)
         
         reminders_list = list(grouped_reminders.values())
         
